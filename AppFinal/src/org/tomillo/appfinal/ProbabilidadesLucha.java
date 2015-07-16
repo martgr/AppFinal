@@ -8,17 +8,17 @@ public class ProbabilidadesLucha {
 	final static int NUMERO_CLUSTERS = 12;
 
 	// Tablas de Logica Difusa para cada tipo de acción
-	static double[][] LogicaDifusa1 = {
+	static float[][] LogicaDifusa1 = {
 			{ 0, 5, 12, 19, 24, 26, 27, 28, 30, 33, 34, 36 },
-			{ 0.0, 0.2, 0.4, 0.5, 0.6, 0.63, 0.65, 0.75, 0.8, 0.85, 0.9, 0.95 } };
+			{ 0.0f, 0.2f, 0.4f, 0.5f, 0.6f, 0.63f, 0.65f, 0.75f, 0.8f, 0.85f, 0.9f, 0.95f } };
 
-	static double[][] LogicaDifusa2 = {
+	static float[][] LogicaDifusa2 = {
 			{ 0, 2, 4, 7, 13, 18, 22, 27, 29, 32, 34, 36 },
-			{ 0.0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.65, 0.7, 0.8, 0.85, 0.9, 0.95 } };
+			{ 0.0f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.65f, 0.7f, 0.8f, 0.85f, 0.9f, 0.95f } };
 
-	static double[][] LogicaDifusa3 = {
+	static float[][] LogicaDifusa3 = {
 			{ 0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 36 },
-			{ 0.0, 0.05, 0.1, 0.15, 0.2, 0.3, 0.33, 0.35, 0.4, 0.45, 0.5, 0.95 } };
+			{ 0.0f, 0.05f, 0.1f, 0.15f, 0.2f, 0.3f, 0.33f, 0.35f, 0.4f, 0.45f, 0.5f, 0.95f } };
 
 	// Probabilidad de jugador de matar a un enemigo
 	// El valor debe de ir entre 0 y 36
@@ -27,7 +27,7 @@ public class ProbabilidadesLucha {
 		for (int i = 0; i < NUMERO_CLUSTERS; i++) {
 
 			if (LogicaDifusa1[0][i] >= Suma1) {
-				return (float) LogicaDifusa1[1][i];
+				return LogicaDifusa1[1][i];
 			}
 		}
 
@@ -42,7 +42,7 @@ public class ProbabilidadesLucha {
 		for (int i = 0; i < NUMERO_CLUSTERS; i++) {
 
 			if (LogicaDifusa2[0][i] >= Suma1) {
-				return (float) LogicaDifusa2[1][i];
+				return LogicaDifusa2[1][i];
 			}
 		}
 
@@ -56,7 +56,7 @@ public class ProbabilidadesLucha {
 		for (int i = 0; i < NUMERO_CLUSTERS; i++) {
 
 			if (LogicaDifusa3[0][i] >= Suma2) {
-				return (float) LogicaDifusa3[1][i];
+				return LogicaDifusa3[1][i];
 			}
 		}
 
