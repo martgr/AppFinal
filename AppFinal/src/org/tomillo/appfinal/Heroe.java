@@ -1,6 +1,5 @@
 package org.tomillo.appfinal;
 
-import java.util.Random;
 
 public class Heroe {
 
