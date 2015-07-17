@@ -21,6 +21,15 @@ public class Heroe {
 	}
 
 	private boolean bVivo = true;
+	private int nivelVida = 100;
+	public int getNivelVida() {
+		return nivelVida;
+	}
+
+	public void setNivelVida(int nivelVida) {
+		this.nivelVida = nivelVida;
+	}
+
 	private Escudo escudo_Cruz;
 	private Escudo escudo_Natural;
 	private Escudo escudo_Artificial;
@@ -77,6 +86,52 @@ public class Heroe {
 		valor = (int) (Math.random()*11+1);
 		escudo_Magia_Ataque = new Escudo(valor,Escudo.GrupoEscudo.ataque);
 		
+		
+	}
+	
+	// Aumenta vida de heroe hasta un máxmimo de 100
+	public void AumentarVida (int cantidad) {
+		
+		int aux = this.nivelVida + cantidad;
+		if (aux>100) {
+			aux =100;
+		}
+		this.nivelVida = aux;
+		
+	}
+	
+	// Disminuye vida. Si es menor de 0 ha muerto el Heroe
+	public void DisminuirVida (int cantidad) {
+		int aux = this.nivelVida - cantidad;
+		if (aux<=0)  {
+			this.bVivo = false;
+			this.nivelVida = 0;
+		}
+		else {
+			this.nivelVida = aux;
+		}
+		
+	}
+	
+	// Aumentamos experiencia
+	public void AumentarExperiencia (int cantidad) {
+		
+		int aux = this.escudo_Cruz.getValor();
+		aux = aux + cantidad;
+		if (aux>12)
+			aux = 12;
+		this.escudo_Cruz.setValor(aux);
+		
+	}
+
+	// Disminuimos experiencia
+	public void DisminuirExperiencia (int cantidad) {
+		
+		int aux = this.escudo_Cruz.getValor();
+		aux = aux - cantidad;
+		if (aux<1)
+			aux=1;
+		this.escudo_Cruz.setValor(aux);
 		
 	}
 	
