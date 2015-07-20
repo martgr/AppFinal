@@ -3,6 +3,7 @@ package org.tomillo.appfinal;
 
 public class Escudo {
 	
+
 	final int NRO_ESCUDOS_PUEBLO = 6;
 	final int NRO_ESCUDOS_RESTO = 12;
 
@@ -63,6 +64,7 @@ public class Escudo {
 		ruta= tipo.name()+valor_inicial+".png";
 
 	}
+	
 	
 	
 	

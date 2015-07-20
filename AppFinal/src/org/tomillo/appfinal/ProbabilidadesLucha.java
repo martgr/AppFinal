@@ -1,8 +1,8 @@
 package org.tomillo.appfinal;
 
 // TOMILLO 16/7/2015
-// Clase para obtener probabilidades de diferentes tipos de 
-// acciones en la pantalla de Heroes
+//Clase para obtener probabilidades de diferentes tipos de 
+//acciones en la pantalla de Heroes
 public class ProbabilidadesLucha {
 
 	final static int NUMERO_CLUSTERS = 12;
