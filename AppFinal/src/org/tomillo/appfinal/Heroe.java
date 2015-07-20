@@ -1,7 +1,31 @@
 package org.tomillo.appfinal;
 
+import org.tomillo.appfinal.Escudo.GrupoEscudo;
+
 
 public class Heroe {
+
+	
+	private Escudo escudo_Cruz;
+	private Escudo escudo_Natural;
+	private Escudo escudo_Artificial;
+	private Escudo escudo_Magia_Ataque;
+	private Escudo escudo_Magia_Defensa;
+
+	final static int MINIMO_VIDA= 5;
+	
+	
+	// Valores de las cartas de Heroes actualmente
+	// para su valoracion en la puntuacion
+	private int CartasHeroes=0;	
+	
+	public int getCartasHeroes() {
+		return CartasHeroes;
+	}
+
+	public void setCartasHeroes(int cartasHeroes) {
+		CartasHeroes = cartasHeroes;
+	}
 
 	public Escudo getEscudo_Magia_Ataque() {
 		return escudo_Magia_Ataque;
@@ -29,11 +53,6 @@ public class Heroe {
 		this.nivelVida = nivelVida;
 	}
 
-	private Escudo escudo_Cruz;
-	private Escudo escudo_Natural;
-	private Escudo escudo_Artificial;
-	private Escudo escudo_Magia_Ataque;
-	private Escudo escudo_Magia_Defensa;
 	
 	
 	public boolean isbVivo() {
@@ -134,6 +153,203 @@ public class Heroe {
 		
 	}
 	
+	// El héroe del jugador ataca en la lucha de Heroes
+	
+	// -1 : Derrota
+	// 0 : Empate
+	// 1 : Victoria
+	public int Atacar(int fuerzaHeroe,int fuerzaEjercito1, int fuerzaEjercito2,
+			int fuerzaEnemigo,int fuerzaEjercitoEnemigo1,int fuerzaEjercitoEnemigo2) {
+		
+		int S1 = fuerzaHeroe + fuerzaEjercito1 + fuerzaEjercito2;
+		int S2 = fuerzaEnemigo + fuerzaEjercitoEnemigo1 + fuerzaEjercitoEnemigo2;
+		
+		float probabilidadHeroe, probabilidadEnemigo;
+
+		float valoresHeroe,valoresEnemigo;
+		boolean bGanaHeroe, bGanaEnemigo;
+
+		// Calculamos las probabilidades de ganar de Heroe y Enemigo
+		// Es mas fuerte el jugador
+		if (fuerzaHeroe>=fuerzaEnemigo) {
+			probabilidadHeroe = ProbabilidadesLucha.ProbabilidadLucha2(S1);
+			probabilidadEnemigo = ProbabilidadesLucha.ProbabilidadLucha1(S2);
+			
+			
+		} 
+		// Es mas fuerte el enemigo
+		else
+		{
+			probabilidadHeroe = ProbabilidadesLucha.ProbabilidadLucha2(S2);
+			probabilidadEnemigo = ProbabilidadesLucha.ProbabilidadLucha1(S1);
+		}
+		
+		// Calculamos valores aleatorios y vemos si
+		// hemos ganado o perdido
+		
+		valoresHeroe = (float) Math.random();
+		if (valoresHeroe<=probabilidadHeroe) {
+			bGanaHeroe=true;
+		}
+		else {
+			bGanaHeroe = false;
+		}
+			
+		
+		valoresEnemigo = (float) Math.random();
+		if (valoresEnemigo<=probabilidadEnemigo) {
+			bGanaEnemigo=true;
+		}
+		else {
+			bGanaEnemigo = false;
+		}
+		
+		if (bGanaHeroe && !bGanaEnemigo) {
+			return 1;
+		}
+		
+		if (bGanaEnemigo && !bGanaHeroe) {
+			return -1;
+		}
+		
+		return 0;
+		
+	}
+	
+	
+	// Devuelve el valor en que quedaria el Enemigo tras haber
+	// perdido una batalla. 
+	// Tras esto, se debera actualizar el objeto Enemigo actualizando
+	// la vida de éste.
+	
+	// Tambien hay que sumar una victoria al Jugador
+	
+	public float PostVictoriaAtacar (int vidaActualEnemigo,int fuerzaHeroe,int fuerzaEjercito1, int fuerzaEjercito2,
+			int fuerzaEnemigo,int fuerzaEjercitoEnemigo1,int fuerzaEjercitoEnemigo2) {
+		
+		int S1 = fuerzaHeroe + fuerzaEjercito1 + fuerzaEjercito2;
+		int S2 = fuerzaEnemigo + fuerzaEjercitoEnemigo1 + fuerzaEjercitoEnemigo2;
+		float porcentajePerdidaVida;
+		
+		
+		porcentajePerdidaVida = S2/S1;
+		if (porcentajePerdidaVida>=1.0)  {
+			porcentajePerdidaVida = S1/S2;
+		}
+		
+		porcentajePerdidaVida = 1-porcentajePerdidaVida;
+		
+		int vidaEnemigo = (int)(vidaActualEnemigo * porcentajePerdidaVida);	
+		if (vidaEnemigo<=MINIMO_VIDA) { 
+			vidaEnemigo = 0;
+			
+		}
+		
+		// Sumamos los valores tras ganar para aumentar puntuacion
+		this.CartasHeroes = S1;
+
+		return vidaEnemigo;
+		
+	}
+			
+	// Esta es la funcion de defensa del jugador
+	
+	// -1 : Derrota
+	// 0 : Empate
+	// 1 : Victoria
+	public int Defender(int fuerzaHeroe,int fuerzaEjercito1, int fuerzaEjercito2,
+			int fuerzaEnemigo,int fuerzaEjercitoEnemigo1,int fuerzaEjercitoEnemigo2) {
+		
+		int S1 = fuerzaHeroe + fuerzaEjercito1 + fuerzaEjercito2;
+		int S2 = fuerzaEnemigo + fuerzaEjercitoEnemigo1 + fuerzaEjercitoEnemigo2;
+		
+		float probabilidadHeroe, probabilidadEnemigo;
+
+		float valoresHeroe,valoresEnemigo;
+		boolean bGanaHeroe, bGanaEnemigo;
+
+		// Calculamos las probabilidades de ganar de Heroe y Enemigo
+		// Es mas fuerte el jugador
+		probabilidadHeroe = ProbabilidadesLucha.ProbabilidadHiereEnemigo(S1);
+		probabilidadEnemigo = ProbabilidadesLucha.ProbabilidadHiereEnemigo(S2);
+		
+		// Calculamos valores aleatorios y vemos si
+		// hemos ganado o perdido
+		
+		valoresHeroe = (float) Math.random();
+		if (valoresHeroe<=probabilidadHeroe) {
+			bGanaHeroe=true;
+		}
+		else {
+			bGanaHeroe = false;
+		}
+			
+		
+		valoresEnemigo = (float) Math.random();
+		if (valoresEnemigo<=probabilidadEnemigo) {
+			bGanaEnemigo=true;
+		}
+		else {
+			bGanaEnemigo = false;
+		}
+		
+		if (bGanaHeroe && !bGanaEnemigo) {
+			return 1;
+		}
+		
+		if (bGanaEnemigo && !bGanaHeroe) {
+			return -1;
+		}
+		
+		return 0;
+		
+	}
+	
+	
+	// Devuelve el valor en que quedaria el Heroe
+	// tras haber perdido una defensa
+	// Tras esto, se debera actualizar el objeto Heroe del Jugador
+	
+	// Tambien tenemos que sumar una victoria al Enemigo
+	
+	public float PostDerrotaDefender (int vidaActualHeroe,int fuerzaHeroe,int fuerzaEjercito1, int fuerzaEjercito2,
+			int fuerzaEnemigo,int fuerzaEjercitoEnemigo1,int fuerzaEjercitoEnemigo2) {
+		
+		int S1 = fuerzaHeroe + fuerzaEjercito1 + fuerzaEjercito2;
+		int S2 = fuerzaEnemigo + fuerzaEjercitoEnemigo1 + fuerzaEjercitoEnemigo2;
+		float porcentajePerdidaVida;
+		
+		
+		porcentajePerdidaVida = S1/S2;
+		if (porcentajePerdidaVida>=1.0)  {
+			porcentajePerdidaVida = S2/S1;
+		}
+		
+		porcentajePerdidaVida = 1-porcentajePerdidaVida;
+		
+		int vidaHeroe = (int)(vidaActualHeroe * porcentajePerdidaVida);	
+		if (vidaHeroe<=MINIMO_VIDA) { 
+			vidaHeroe = 0;
+			bVivo = false;
+		}
+		
+		return vidaHeroe;
+		
+	}
+	
+	
+	// Al entrar en la actividad de Lucha de Heroes
+	// se la llama para tener actualizacion del ejército
+	public void CambiarCartasEjercito() {
+		int nro1,nro2;
+		
+		nro1 = (int)(Math.random() * 11+ 1);
+		nro2 = (int)(Math.random() * 11 + 1);
+		
+		escudo_Natural = new Escudo(nro1,GrupoEscudo.natural);
+		escudo_Artificial = new Escudo(nro2,GrupoEscudo.artificial);
+		
+	}
 	
 	
 }
