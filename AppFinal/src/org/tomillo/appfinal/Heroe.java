@@ -224,7 +224,7 @@ public class Heroe {
 	
 	// Tambien hay que sumar una victoria al Jugador
 	
-	public float PostVictoriaAtacar (int vidaActualEnemigo,int fuerzaHeroe,int fuerzaEjercito1, int fuerzaEjercito2,
+	public int PostVictoriaAtacar (int vidaActualEnemigo,int fuerzaHeroe,int fuerzaEjercito1, int fuerzaEjercito2,
 			int fuerzaEnemigo,int fuerzaEjercitoEnemigo1,int fuerzaEjercitoEnemigo2) {
 		
 		int S1 = fuerzaHeroe + fuerzaEjercito1 + fuerzaEjercito2;
@@ -312,7 +312,7 @@ public class Heroe {
 	
 	// Tambien tenemos que sumar una victoria al Enemigo
 	
-	public float PostDerrotaDefender (int vidaActualHeroe,int fuerzaHeroe,int fuerzaEjercito1, int fuerzaEjercito2,
+	public int PostDerrotaDefender (int vidaActualHeroe,int fuerzaHeroe,int fuerzaEjercito1, int fuerzaEjercito2,
 			int fuerzaEnemigo,int fuerzaEjercitoEnemigo1,int fuerzaEjercitoEnemigo2) {
 		
 		int S1 = fuerzaHeroe + fuerzaEjercito1 + fuerzaEjercito2;
