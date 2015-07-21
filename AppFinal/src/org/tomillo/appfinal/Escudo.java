@@ -1,16 +1,87 @@
 package org.tomillo.appfinal;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Escudo {
+
+public class Escudo implements Parcelable {
 	
 
 	final int NRO_ESCUDOS_PUEBLO = 6;
 	final int NRO_ESCUDOS_RESTO = 12;
 
+	// Valor que indica el nro. de escudo cargado
+	private int valor_inicial;
+	// Valor del escudo tratado por código
+	private int valor;
+	// Tipo del escudo
+	private GrupoEscudo tipoEscudo;
+	// Ruta del escudo .png
+	private String ruta;
+	
+
+	public static final Parcelable.Creator<Escudo> CREATOR = new Parcelable.Creator<Escudo>() {
+
+		@Override
+		public Escudo createFromParcel(Parcel source) {
+			// TODO Auto-generated method stub
+			return new Escudo(source);
+		}
+
+		@Override
+		public Escudo[] newArray(int size) {
+			// TODO Auto-generated method stub
+			return new Escudo[size];
+		}
+		
+		
+		
+	};
+	
 	// Tipos de escudos
 	public enum GrupoEscudo  {torre,rey,nobleza,pueblo,puntuacion,defensa,
 		ataque,cruz,natural,artificial}
 
+	
+	private Escudo (Parcel source) {
+		this.valor_inicial = source.readInt();
+		this.valor = source.readInt();
+		int aux = source.readInt();
+		switch (aux) {
+			case 0:
+				this.tipoEscudo = GrupoEscudo.torre;
+				break;
+			case 1:
+				this.tipoEscudo = GrupoEscudo.rey;
+				break;
+			case 2:
+				this.tipoEscudo = GrupoEscudo.nobleza;
+				break;
+			case 3:
+				this.tipoEscudo = GrupoEscudo.pueblo;
+				break;
+			case 4:
+				this.tipoEscudo = GrupoEscudo.puntuacion;
+				break;
+			case 5:
+				this.tipoEscudo = GrupoEscudo.defensa;
+				break;
+			case 6:
+				this.tipoEscudo = GrupoEscudo.ataque;
+				break;
+			case 7:
+				this.tipoEscudo = GrupoEscudo.cruz;
+				break;
+			case 8:
+				this.tipoEscudo = GrupoEscudo.natural;
+				break;
+			case 9:
+				this.tipoEscudo = GrupoEscudo.artificial;
+				break;
+		}
+		this.ruta = source.readString();
+	}
+	
 	public int getValor_inicial() {
 		return valor_inicial;
 	}
@@ -43,15 +114,6 @@ public class Escudo {
 		this.ruta = ruta;
 	}
 
-	// Valor que indica el nro. de escudo cargado
-	private int valor_inicial;
-	// Tipo del escudo
-	private GrupoEscudo tipoEscudo;
-	// Valor del escudo tratado por código
-	private int valor;
-	
-	// Ruta del escudo .png
-	private String ruta;
 	
 	public Escudo (int valor_inicial,GrupoEscudo tipo) {
 		
@@ -63,6 +125,23 @@ public class Escudo {
 		
 		ruta= tipo.name()+valor_inicial+".png";
 
+	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+
+		dest.writeInt(this.valor_inicial);
+		dest.writeInt(this.valor);
+		// Empieza en cero
+		dest.writeInt(this.tipoEscudo.ordinal());
+		dest.writeString(this.ruta);
+		
 	}
 	
 	

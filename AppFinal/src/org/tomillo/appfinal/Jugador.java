@@ -1,12 +1,34 @@
 package org.tomillo.appfinal;
 
-public class Jugador {
+import android.os.Parcel;
+import android.os.Parcelable;
 
+public class Jugador implements Parcelable {
+
+	public static final Parcelable.Creator<Jugador> CREATOR = new Parcelable.Creator<Jugador>() {
+
+		@Override
+		public Jugador createFromParcel(Parcel source) {
+			// 
+			return new Jugador(source);
+		}
+
+		@Override
+		public Jugador[] newArray(int size) {
+			// TODO Auto-generated method stub
+			return new Jugador[size];
+			
+		}
+		
+
+	
+	};
+	
+	
 	private int victorias_actuales;
-	// Heroe del jugador
-	private Heroe heroeJugador;
-
 	// / Elementos del castillo
+	// Cantidad de bankias
+	private int nroBankias;
 	// Torre del Castillo
 	private Escudo escudoTorre;
 	// Escudo del rey
@@ -15,6 +37,29 @@ public class Jugador {
 	private Escudo escudoNobleza;
 	// Escudo del pueblo
 	private Escudo escudoPueblo;
+	// Heroe del jugador
+	private Heroe heroeJugador;
+	
+	// Constructor
+	private Jugador(Parcel source) {
+		this.victorias_actuales = source.readInt();
+		this.nroBankias = source.readInt();
+		this.escudoTorre = source.readParcelable(Escudo.class.getClassLoader());
+		this.escudoRey = source.readParcelable(Escudo.class.getClassLoader());
+		this.escudoNobleza = source.readParcelable(Escudo.class.getClassLoader());
+		this.escudoPueblo = source.readParcelable(Escudo.class.getClassLoader());
+		this.heroeJugador = source.readParcelable(Heroe.class.getClassLoader());
+		
+	}
+	
+
+	public int getNroBankias() {
+		return nroBankias;
+	}
+
+	public void setNroBankias(int nroBankias) {
+		this.nroBankias = nroBankias;
+	}
 
 	public Escudo getEscudoNobleza() {
 		return escudoNobleza;
@@ -82,6 +127,7 @@ public class Jugador {
 		this.victorias_actuales = 0;
 		this.puntuacion = 0;
 		this.TituloNobiliario = 0;
+		this.nroBankias = 0;
 
 		// Asignamos el escudo de la torre
 		int aux = (int) Math.random() * 11 + 1;
@@ -105,7 +151,7 @@ public class Jugador {
 	// Se realizara al finalizar la partida
 	public void ActualizarPuntuacion() {
 		this.puntuacion = 0;
-		this.puntuacion += this.heroeJugador.getCartasHeroes();
+		this.puntuacion += this.heroeJugador.getCartasHeroe();
 	}
 
 	// Se le llama al aumentar victorias
@@ -158,5 +204,45 @@ public class Jugador {
 		escudoNobleza = new Escudo(aux, Escudo.GrupoEscudo.pueblo);
 
 	}
+	
+	public void AumentarBankias(int nroBankias) {
+		this.nroBankias+=2;
+	}
 
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/*
+	private int victorias_actuales;
+	// / Elementos del castillo
+	// Cantidad de bankias
+	private int nroBankias;
+
+	// Torre del Castillo
+	private Escudo escudoTorre;
+	// Escudo del rey
+	private Escudo escudoRey;
+	// Escudo de la nobleza
+	private Escudo escudoNobleza;
+	// Escudo del pueblo
+	private Escudo escudoPueblo;
+	// Heroe del jugador
+	private Heroe heroeJugador; */
+	
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		
+		dest.writeInt(this.victorias_actuales);
+		dest.writeInt(this.nroBankias);
+		dest.writeParcelable(escudoTorre,flags);
+		dest.writeParcelable(escudoRey,flags);
+		dest.writeParcelable(escudoNobleza,flags);
+		dest.writeParcelable(escudoPueblo,flags);
+		dest.writeParcelable(heroeJugador,flags);
+	}
+	
+	
 }

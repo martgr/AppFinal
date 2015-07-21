@@ -2,46 +2,54 @@ package org.tomillo.appfinal;
 
 import org.tomillo.appfinal.Escudo.GrupoEscudo;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Heroe {
 
+public class Heroe implements Parcelable {
+
+	public static final Parcelable.Creator<Heroe> CREATOR = new Parcelable.Creator<Heroe>() {
+
+		@Override
+		public Heroe createFromParcel(Parcel source) {
+			
+			return new Heroe(source);
+		}
+
+		@Override
+		public Heroe[] newArray(int size) {
+			
+			return new Heroe[size];
+		}
+		
+	};
+	
 	
 	private Escudo escudo_Cruz;
 	private Escudo escudo_Natural;
 	private Escudo escudo_Artificial;
-	private Escudo escudo_Magia_Ataque;
-	private Escudo escudo_Magia_Defensa;
 
 	final static int MINIMO_VIDA= 5;
 	
+	private int CartasHeroe=0;
 	
-	// Valores de las cartas de Heroes actualmente
-	// para su valoracion en la puntuacion
-	private int CartasHeroes=0;	
+	public int getCartasHeroe() {
+		return CartasHeroe;
+	}
+
+	public void setCartasHeroe(int cartasHeroe) {
+		CartasHeroe = cartasHeroe;
+	}
+
+	private Heroe (Parcel source) {
+		this.bVivo = (source.readByte() == 1  ? true : false);
+		this.nivelVida = source.readInt();
+		this.escudo_Cruz = source.readParcelable(Escudo.class.getClassLoader());
+		this.escudo_Natural = source.readParcelable(Escudo.class.getClassLoader());
+		this.escudo_Artificial = source.readParcelable(Escudo.class.getClassLoader());
+	}
 	
-	public int getCartasHeroes() {
-		return CartasHeroes;
-	}
 
-	public void setCartasHeroes(int cartasHeroes) {
-		CartasHeroes = cartasHeroes;
-	}
-
-	public Escudo getEscudo_Magia_Ataque() {
-		return escudo_Magia_Ataque;
-	}
-
-	public void setEscudo_Magia_Ataque(Escudo escudo_Magia_Ataque) {
-		this.escudo_Magia_Ataque = escudo_Magia_Ataque;
-	}
-
-	public Escudo getEscudo_Magia_Defensa() {
-		return escudo_Magia_Defensa;
-	}
-
-	public void setEscudo_Magia_Defensa(Escudo escudo_Magia_Defensa) {
-		this.escudo_Magia_Defensa = escudo_Magia_Defensa;
-	}
 
 	private boolean bVivo = true;
 	private int nivelVida = 100;
@@ -97,13 +105,6 @@ public class Heroe {
 		escudo_Natural = new Escudo(valor,Escudo.GrupoEscudo.natural);
 		valor = (int) (Math.random()*11+1);
 		escudo_Artificial = new Escudo(valor,Escudo.GrupoEscudo.artificial);
-
-		// Escudos de las magias
-		valor = (int) (Math.random()*11+1);
-		escudo_Magia_Defensa = new Escudo(valor,Escudo.GrupoEscudo.defensa);
-		valor = (int) (Math.random()*11+1);
-		escudo_Magia_Ataque = new Escudo(valor,Escudo.GrupoEscudo.ataque);
-		
 		
 	}
 	
@@ -245,9 +246,8 @@ public class Heroe {
 			
 		}
 		
-		// Sumamos los valores tras ganar para aumentar puntuacion
-		this.CartasHeroes = S1;
-
+		this.CartasHeroe = S1;
+		
 		return vidaEnemigo;
 		
 	}
@@ -348,6 +348,26 @@ public class Heroe {
 		
 		escudo_Natural = new Escudo(nro1,GrupoEscudo.natural);
 		escudo_Artificial = new Escudo(nro2,GrupoEscudo.artificial);
+		
+	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		/*private Escudo escudo_Cruz;
+		private Escudo escudo_Natural;
+		private Escudo escudo_Artificial; */		
+
+		dest.writeByte((byte) (this.bVivo ? 1 : 0));
+		dest.writeInt(this.nivelVida);
+		dest.writeParcelable (this.escudo_Cruz,flags);
+		dest.writeParcelable(this.escudo_Natural, flags);
+		dest.writeParcelable(this.escudo_Artificial,flags);
 		
 	}
 	
