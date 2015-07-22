@@ -1,3 +1,5 @@
+// Clase de un escudo en concreto
+
 package org.tomillo.appfinal;
 
 import android.os.Parcel;
@@ -6,10 +8,17 @@ import android.os.Parcelable;
 
 public class Escudo implements Parcelable {
 	
-
+	// ===========
+	// CONSTANTES
+	// ===========
+	
 	final int NRO_ESCUDOS_PUEBLO = 6;
 	final int NRO_ESCUDOS_RESTO = 12;
 
+	// ==========
+	// Atributos
+	// ==========
+	
 	// Valor que indica el nro. de escudo cargado
 	private int valor_inicial;
 	// Valor del escudo tratado por código
@@ -24,24 +33,42 @@ public class Escudo implements Parcelable {
 
 		@Override
 		public Escudo createFromParcel(Parcel source) {
-			// TODO Auto-generated method stub
 			return new Escudo(source);
 		}
 
 		@Override
 		public Escudo[] newArray(int size) {
-			// TODO Auto-generated method stub
 			return new Escudo[size];
 		}
 		
-		
-		
 	};
 	
+	
+	// ================
 	// Tipos de escudos
+	// 
+	// El nombre del recurso es el string del Grupo + nro. + ".png"
+	//
+	// ================
+	
 	public enum GrupoEscudo  {torre,rey,nobleza,pueblo,puntuacion,defensa,
 		ataque,cruz,natural,artificial}
 
+	// =================
+	// Constructores
+	// =================
+
+	public Escudo (int valor_inicial,GrupoEscudo tipo) {
+		
+		this.valor_inicial=valor_inicial;
+		this.tipoEscudo = tipo;
+		this.valor = valor_inicial;
+		
+		// Aquí hay que hallar la ruta del .png
+		
+		ruta= tipo.name()+valor_inicial+".png";
+	}
+	
 	
 	private Escudo (Parcel source) {
 		this.valor_inicial = source.readInt();
@@ -82,6 +109,10 @@ public class Escudo implements Parcelable {
 		this.ruta = source.readString();
 	}
 	
+	// ==================
+	// Getters y Setter
+	// ==================
+	
 	public int getValor_inicial() {
 		return valor_inicial;
 	}
@@ -114,22 +145,14 @@ public class Escudo implements Parcelable {
 		this.ruta = ruta;
 	}
 
-	
-	public Escudo (int valor_inicial,GrupoEscudo tipo) {
-		
-		this.valor_inicial=valor_inicial;
-		this.tipoEscudo = tipo;
-		this.valor = valor_inicial;
-		
-		// Aquí hay que hallar la ruta del .png
-		
-		ruta= tipo.name()+valor_inicial+".png";
 
-	}
+	//========================================
+	// Funciones que controlan en Parcelado
+	//=======================================
+	
 
 	@Override
 	public int describeContents() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -143,9 +166,5 @@ public class Escudo implements Parcelable {
 		dest.writeString(this.ruta);
 		
 	}
-	
-	
-	
-	
 
 }

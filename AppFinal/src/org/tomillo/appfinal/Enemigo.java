@@ -1,3 +1,5 @@
+// Clase del Enemigo (Ordenador) 
+
 package org.tomillo.appfinal;
 
 import android.os.Parcel;
@@ -19,32 +21,38 @@ public class Enemigo implements Parcelable {
 	    	return new Enemigo[size];
 	}};
 	
-
-	
+	// ==========
+	// Atributos
+	// ==========
 	
 	private int victorias_actuales;
 	private int nivelVida= 100;
 	boolean bVivo = true;
 
-	// Constructor
+	// ==============
+	// Constructores
+	// ==============
+	
 	private Enemigo (Parcel source) {
 		this.victorias_actuales = source.readInt();
 		this.nivelVida = source.readInt();
 		
 		byte byteauxVivo;
 		byteauxVivo = source.readByte();
-		if (byteauxVivo==1) {
-			this.bVivo=true;
-		} else {
-			this.bVivo=false;
-		}
-			
-		
+		this.bVivo = source.readByte() == 1 ? true : false;
 		
 	}
 	
 	
+	public Enemigo() {
+		this.victorias_actuales=0;
+	}
 
+
+	// ==================
+	// Getters y Setters
+	// ==================
+	
 	public int getNivelVida() {
 		return nivelVida;
 	}
@@ -61,9 +69,10 @@ public class Enemigo implements Parcelable {
 		this.victorias_actuales = victorias_actuales;
 	}
 	
-	public Enemigo() {
-		this.victorias_actuales=0;
-	}
+	//===================================
+	// Acciones realizadas con el objeto
+	//===================================
+
 	
 	public void AumentarVida (int valor) {
 		int aux = this.nivelVida;
@@ -87,9 +96,14 @@ public class Enemigo implements Parcelable {
 		this.victorias_actuales++;
 	}
 
+	
+	//========================================
+	// Funciones que controlan en Parcelado
+	//=======================================
+
+	
 	@Override
 	public int describeContents() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

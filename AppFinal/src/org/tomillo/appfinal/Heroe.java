@@ -1,3 +1,6 @@
+// Clase del Heroe.
+// Contiene los tres escudos con los que lucha
+
 package org.tomillo.appfinal;
 
 import org.tomillo.appfinal.Escudo.GrupoEscudo;
@@ -8,6 +11,14 @@ import android.os.Parcelable;
 
 public class Heroe implements Parcelable {
 
+	// ============
+	// Constantes
+	// ============
+	
+	final static int MINIMO_VIDA= 5;	
+	
+	
+	
 	public static final Parcelable.Creator<Heroe> CREATOR = new Parcelable.Creator<Heroe>() {
 
 		@Override
@@ -24,23 +35,32 @@ public class Heroe implements Parcelable {
 		
 	};
 	
-	
+	// ==========
+	// Atributos
+	// ==========
+	private boolean bVivo = true;
+	private int nivelVida = 100;
 	private Escudo escudo_Cruz;
 	private Escudo escudo_Natural;
 	private Escudo escudo_Artificial;
 
-	final static int MINIMO_VIDA= 5;
+	// ======================
+    // 	Variables Auxiliares
+	// =======================
 	
+	// Suma de cartas para aumentar la puntuacion del jugador
 	private int CartasHeroe=0;
-	
 	public int getCartasHeroe() {
 		return CartasHeroe;
 	}
-
 	public void setCartasHeroe(int cartasHeroe) {
 		CartasHeroe = cartasHeroe;
 	}
 
+	// ===============
+	// Constructores
+	// ===============
+	
 	private Heroe (Parcel source) {
 		this.bVivo = (source.readByte() == 1  ? true : false);
 		this.nivelVida = source.readInt();
@@ -49,10 +69,23 @@ public class Heroe implements Parcelable {
 		this.escudo_Artificial = source.readParcelable(Escudo.class.getClassLoader());
 	}
 	
+	public Heroe () {
+		bVivo = true;
+		
+		// Ejército
+		int valor = (int) (Math.random()*11+1);
+		escudo_Cruz = new Escudo(valor,Escudo.GrupoEscudo.cruz);
+		valor = (int) (Math.random()*11+1);
+		escudo_Natural = new Escudo(valor,Escudo.GrupoEscudo.natural);
+		valor = (int) (Math.random()*11+1);
+		escudo_Artificial = new Escudo(valor,Escudo.GrupoEscudo.artificial);
+		
+	}
 
+	// ===================
+	// Getters y Setters
+	// ===================
 
-	private boolean bVivo = true;
-	private int nivelVida = 100;
 	public int getNivelVida() {
 		return nivelVida;
 	}
@@ -60,8 +93,6 @@ public class Heroe implements Parcelable {
 	public void setNivelVida(int nivelVida) {
 		this.nivelVida = nivelVida;
 	}
-
-	
 	
 	public boolean isbVivo() {
 		return bVivo;
@@ -95,18 +126,9 @@ public class Heroe implements Parcelable {
 		this.escudo_Artificial = escudo_Artificial;
 	}
 
-	public Heroe () {
-		bVivo = true;
-		
-		// Ejército
-		int valor = (int) (Math.random()*11+1);
-		escudo_Cruz = new Escudo(valor,Escudo.GrupoEscudo.cruz);
-		valor = (int) (Math.random()*11+1);
-		escudo_Natural = new Escudo(valor,Escudo.GrupoEscudo.natural);
-		valor = (int) (Math.random()*11+1);
-		escudo_Artificial = new Escudo(valor,Escudo.GrupoEscudo.artificial);
-		
-	}
+	// ==========================
+	// Acciones sobre el objeto
+	// ==========================
 	
 	// Aumenta vida de heroe hasta un máxmimo de 100
 	public void AumentarVida (int cantidad) {
@@ -153,6 +175,10 @@ public class Heroe implements Parcelable {
 		this.escudo_Cruz.setValor(aux);
 		
 	}
+	
+	// =====================================
+	// Funciones de la lucha entre Heroes
+	// =====================================
 	
 	// El héroe del jugador ataca en la lucha de Heroes
 	
@@ -351,9 +377,13 @@ public class Heroe implements Parcelable {
 		
 	}
 
+	//========================================
+	// Funciones que controlan en Parcelado
+	//=======================================
+
+	
 	@Override
 	public int describeContents() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
