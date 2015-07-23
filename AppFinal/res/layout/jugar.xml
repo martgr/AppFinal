@@ -1,33 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="@drawable/background"
-    android:orientation="vertical" >
+    android:onClick="Configuracion" >
 
-    <Button
-        android:id="@+id/btnRecords"
+    <ImageButton
+        android:id="@+id/ImgBtnRecords"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/btrecord" />
+        android:layout_alignLeft="@+id/ImgBtnJugar"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="63dp"
+        android:background="@drawable/btrecord"
+        android:src="@drawable/btrecord" />
 
-    <Button
-        android:id="@+id/btnJugar"
+    <ImageButton
+        android:id="@+id/ImgBtnJugar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|center_horizontal|center"
-        android:layout_margin="50dp"
-        android:layout_marginLeft="0dp"
-        android:background="@drawable/btjugar" />
+        android:layout_below="@+id/ImgBtnRecords"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/btjugar"
+        android:src="@drawable/btjugar" />
 
-    <Button
-        android:id="@+id/btnConfiguracion"
+    <ImageButton
+        android:id="@+id/ImgBtnConfi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|center_horizontal|center"
-        android:layout_margin="0dp"
-        android:background="@drawable/btconfi" />
+        android:layout_alignLeft="@+id/ImgBtnJugar"
+        android:layout_below="@+id/ImgBtnJugar"
+        android:layout_marginTop="29dp"
+        android:background="@drawable/btjugar"
+        android:src="@drawable/btconfi" />
 
-</LinearLayout>
+    <ImageButton
+        android:id="@+id/ImgBtnSalir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="58dp"
+        android:background="@drawable/btnsalir"
+        android:onClick="Salir"
+        android:src="@drawable/btnsalir" />
+
+</RelativeLayout>

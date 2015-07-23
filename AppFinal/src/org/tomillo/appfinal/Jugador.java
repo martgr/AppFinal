@@ -181,16 +181,16 @@ public class Jugador implements Parcelable {
 		this.nroActualizacionesCastillo = MAXIMOACTUALIZACIONES;
 
 		// Asignamos el escudo de la torre
-		int aux = (int) Math.random() * 11 + 1;
+		int aux = (int) (Math.random() * 12) + 1;
 		escudoTorre = new Escudo(aux, Escudo.GrupoEscudo.torre);
 		// Asignamos el escudo del rey;
-		aux = (int) Math.random() * 11 + 1;
+		aux = (int) (Math.random() * 12) + 1;
 		escudoRey = new Escudo(aux, Escudo.GrupoEscudo.rey);
 		// Asignamos el escudo de la nobleza
-		aux = (int) Math.random() * 11 + 1;
+		aux = (int) (Math.random() * 12) + 1;
 		escudoNobleza = new Escudo(aux, Escudo.GrupoEscudo.nobleza);
 		// Asignamos el escudo del pueblo
-		aux = (int) Math.random() * 5 + 1;
+		aux = (int) (Math.random() * 6) + 1;
 		escudoPueblo = new Escudo(aux, Escudo.GrupoEscudo.pueblo);
 
 		// Creacion jugadores
@@ -294,13 +294,13 @@ public class Jugador implements Parcelable {
 
 		int aux;
 		// Asignamos el escudo del rey;
-		aux = (int) Math.random() * 11 + 1;
+		aux = (int) (Math.random() * 12) + 1;
 		escudoRey = new Escudo(aux, Escudo.GrupoEscudo.rey);
 		// Asignamos el escudo de la nobleza
-		aux = (int) Math.random() * 11 + 1;
+		aux = (int) (Math.random() * 12) + 1;
 		escudoNobleza = new Escudo(aux, Escudo.GrupoEscudo.nobleza);
 		// Asignamos el escudo del pueblo
-		aux = (int) Math.random() * 5 + 1;
+		aux = (int) (Math.random() * 6) + 1;
 		escudoNobleza = new Escudo(aux, Escudo.GrupoEscudo.pueblo);
 
 	}

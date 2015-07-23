@@ -3,5 +3,27 @@
 
     <string name="app_name">AppFinal</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="ayuda" />
+    <string name="acerca" />
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="imagen" />
+    <string name="title_activity_configuracion">Configuracion</string>
+    <string name="Si">Si</string>
+    <string name="No">No</string>
+    <string name="Sonido">Sonido</string>
+    <string name="title_activity_escudo">Escudo</string>
+
+    <string-array name="pref_nivel_entradas"></string-array>
+    <string-array name="pref_nivel_valores"></string-array>
+
+    <string name="pref_nivel_default" />
+    <string name="title_activity_preferencias">title_activity_preferencias</string>
+    <string name="creditos" />
+    <string name="title_activity_menu_escudos">MenuEscudos</string>
+    <string name="txtTitulo" />
+    <string name="txtContadorBankias" />
+    <string name="txtVictoriasOrdenador">Victorias Ordenador</string>
+    <string name="txtContadorVictoriasOrdenador" />
 
 </resources>

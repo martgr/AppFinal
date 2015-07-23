@@ -2,12 +2,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <TextView
-        android:id="@+id/textView1"
+    <ImageButton
+        android:id="@+id/BtnBankia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/bankialogo" />
+
+    <ImageButton
+        android:id="@+id/BtnMonteMadrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/BtnBankia"
+        android:layout_alignLeft="@+id/BtnBankia"
+        android:src="@drawable/montemadrid" />
+
+    <ImageButton
+        android:id="@+id/BtnTomillo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/BtnMonteMadrid"
+        android:layout_alignLeft="@+id/BtnMonteMadrid"
+        android:src="@drawable/tomillologo" />
+
+    <ImageButton
+        android:id="@+id/ImgBtnLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/BtnTomillo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="43dp"
+        android:background="@drawable/nombre"
+        android:onClick="Logo"
+        android:src="@drawable/nombre" />
 
 </RelativeLayout>
