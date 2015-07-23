@@ -1,21 +1,22 @@
 // Funciones de probabilidades para resolver Luchas
+// Versión del 22/7/2015
 
 package org.tomillo.appfinal;
 
 // TOMILLO 16/7/2015
 //Clase para obtener probabilidades de diferentes tipos de 
-//acciones en la pantalla de Heroes
+//acciones en la pantalla de Heroes y Castillo
 public class ProbabilidadesLucha {
 
 	// ============
-	// Constantes
+	// 	Constantes
 	// ============
 	
 	final static int NUMERO_CLUSTERS = 12;
 
 	// =====================================
-	// Tablas estadisticas
-	// Se tocaran para mejorar jugabilidad
+	// 	Tablas estadisticas
+	// 	Se tocaran para mejorar jugabilidad
 	// =====================================
 	
 	// Tablas de Logica Difusa para cada tipo de acción en la lucha de Heroes
@@ -37,7 +38,7 @@ public class ProbabilidadesLucha {
 		{0.0f,0.05f,0.1f,0.2f,0.3f,0.4f,0.5f,0.52f,0.55f,0.6f,0.8f,0.95f}};
 	
 	// =================================
-	// Funciones a utilizar del objeto
+	// 	Funciones a utilizar del objeto
 	// =================================
 	
 	// Probabilidades en castillo. El valor debe ir de 0 a 12

@@ -1,5 +1,6 @@
 // Clase del Heroe.
 // Contiene los tres escudos con los que lucha
+// Versión del 22/7/2015
 
 package org.tomillo.appfinal;
 
@@ -7,12 +8,13 @@ import org.tomillo.appfinal.Escudo.GrupoEscudo;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 
 public class Heroe implements Parcelable {
 
 	// ============
-	// Constantes
+	// 	Constantes
 	// ============
 	
 	final static int MINIMO_VIDA= 5;	
@@ -36,10 +38,10 @@ public class Heroe implements Parcelable {
 	};
 	
 	// ==========
-	// Atributos
+	// 	Atributos
 	// ==========
 	private boolean bVivo = true;
-	private int nivelVida = 100;
+	private int nivelVida;
 	private Escudo escudo_Cruz;
 	private Escudo escudo_Natural;
 	private Escudo escudo_Artificial;
@@ -49,29 +51,36 @@ public class Heroe implements Parcelable {
 	// =======================
 	
 	// Suma de cartas para aumentar la puntuacion del jugador
-	private int CartasHeroe=0;
 	public int getCartasHeroe() {
-		return CartasHeroe;
-	}
-	public void setCartasHeroe(int cartasHeroe) {
-		CartasHeroe = cartasHeroe;
+		int suma = escudo_Cruz.getValor() + escudo_Natural.getValor()  + 
+				escudo_Artificial.getValor();
+		return suma;
 	}
 
 	// ===============
-	// Constructores
+	// 	Constructores
 	// ===============
 	
 	private Heroe (Parcel source) {
 		this.bVivo = (source.readByte() == 1  ? true : false);
+		if (this.bVivo)
+			Log.i("heroe","Leido bVivo : TRUE");
+		else
+			Log.i("heroe","Leido bVivo : FALSE");
 		this.nivelVida = source.readInt();
+		Log.i("heroe","Leido nivelVida : " + Integer.toString(this.nivelVida));
 		this.escudo_Cruz = source.readParcelable(Escudo.class.getClassLoader());
+		Log.i("heroe","Leido EscudoCruz");
 		this.escudo_Natural = source.readParcelable(Escudo.class.getClassLoader());
+		Log.i("heroe","Leido EscudoNatural");		
 		this.escudo_Artificial = source.readParcelable(Escudo.class.getClassLoader());
+		Log.i("heroe","Leido EscudoArtificial");		
 	}
 	
 	public Heroe () {
+
 		bVivo = true;
-		
+		nivelVida = 100;
 		// Ejército
 		int valor = (int) (Math.random()*11+1);
 		escudo_Cruz = new Escudo(valor,Escudo.GrupoEscudo.cruz);
@@ -83,15 +92,24 @@ public class Heroe implements Parcelable {
 	}
 
 	// ===================
-	// Getters y Setters
+	// 	Getters y Setters
 	// ===================
 
 	public int getNivelVida() {
-		return nivelVida;
+		if (!bVivo)
+			return 0;
+		else
+			return nivelVida;
 	}
 
 	public void setNivelVida(int nivelVida) {
+		
+		if (nivelVida>100)
+			nivelVida=100;
 		this.nivelVida = nivelVida;
+		if (this.nivelVida<=0) {
+			this.bVivo=false;
+		}
 	}
 	
 	public boolean isbVivo() {
@@ -127,11 +145,14 @@ public class Heroe implements Parcelable {
 	}
 
 	// ==========================
-	// Acciones sobre el objeto
+	// 	Acciones sobre el objeto
 	// ==========================
-	
-	// Aumenta vida de heroe hasta un máxmimo de 100
+
+	// Pre : cantidad entre 1 y 100
+	// Post : Aumenta vida de heroe hasta un máxmimo de 100
 	public void AumentarVida (int cantidad) {
+		if ((cantidad<1) || (cantidad>100))
+			return;
 		
 		int aux = this.nivelVida + cantidad;
 		if (aux>100) {
@@ -140,9 +161,14 @@ public class Heroe implements Parcelable {
 		this.nivelVida = aux;
 		
 	}
-	
+
+	// Pre : cantidad entre 1 y 100
 	// Disminuye vida. Si es menor de 0 ha muerto el Heroe
 	public void DisminuirVida (int cantidad) {
+		
+		if ((cantidad<1) || (cantidad>100))
+			return;
+		
 		int aux = this.nivelVida - cantidad;
 		if (aux<=0)  {
 			this.bVivo = false;
@@ -154,7 +180,7 @@ public class Heroe implements Parcelable {
 		
 	}
 	
-	// Aumentamos experiencia
+	// Aumentamos experiencia en un valor
 	public void AumentarExperiencia (int cantidad) {
 		
 		int aux = this.escudo_Cruz.getValor();
@@ -165,7 +191,7 @@ public class Heroe implements Parcelable {
 		
 	}
 
-	// Disminuimos experiencia
+	// Disminuimos experiencia en un valor
 	public void DisminuirExperiencia (int cantidad) {
 		
 		int aux = this.escudo_Cruz.getValor();
@@ -177,7 +203,7 @@ public class Heroe implements Parcelable {
 	}
 	
 	// =====================================
-	// Funciones de la lucha entre Heroes
+	// 	Funciones de la lucha entre Heroes
 	// =====================================
 	
 	// El héroe del jugador ataca en la lucha de Heroes
@@ -271,9 +297,7 @@ public class Heroe implements Parcelable {
 			vidaEnemigo = 0;
 			
 		}
-		
-		this.CartasHeroe = S1;
-		
+
 		return vidaEnemigo;
 		
 	}
@@ -378,7 +402,7 @@ public class Heroe implements Parcelable {
 	}
 
 	//========================================
-	// Funciones que controlan en Parcelado
+	// 	Funciones que controlan en Parcelado
 	//=======================================
 
 	
@@ -394,10 +418,19 @@ public class Heroe implements Parcelable {
 		private Escudo escudo_Artificial; */		
 
 		dest.writeByte((byte) (this.bVivo ? 1 : 0));
+		if (this.bVivo==true)
+			Log.i("heroe","TRUE");
+		else
+			Log.i("heroe","FALSE");
+		
 		dest.writeInt(this.nivelVida);
+		Log.i("heroe","Escrito NivelVida : " + Integer.toString(this.nivelVida));
 		dest.writeParcelable (this.escudo_Cruz,flags);
+		Log.i("heroe","Insertado escudo_Cruz");
 		dest.writeParcelable(this.escudo_Natural, flags);
+		Log.i("heroe","Insertado escudo_Natural");		
 		dest.writeParcelable(this.escudo_Artificial,flags);
+		Log.i("heroe","Insertado escudo_Artificial");		
 		
 	}
 	
