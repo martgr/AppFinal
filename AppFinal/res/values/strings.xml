@@ -4,8 +4,8 @@
     <string name="app_name">AppFinal</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="ayuda" />
-    <string name="acerca" />
+    <string name="ayuda">Ayuda</string>
+    <string name="acerca">Acerca de</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="imagen" />
     <string name="title_activity_configuracion">Configuracion</string>
@@ -25,5 +25,13 @@
     <string name="txtContadorBankias" />
     <string name="txtVictoriasOrdenador">Victorias Ordenador</string>
     <string name="txtContadorVictoriasOrdenador" />
+    <string name="title_activity_transicion_castillo">Transicion_castillo</string>
+
+   
+
+    <string name="asalto">Asalto al Castillo</string>
+    <string name="title_activity_pantalla_final">Pantalla_final</string>
+    <string name="title_activity_pantalla_finalperdido">Pantalla_finalperdido</string>
+    <string name="title_activity_transicion__heroe">Transicion_Heroe</string>
 
 </resources>

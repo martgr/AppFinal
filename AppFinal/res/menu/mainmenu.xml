@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:id="@+id/Ayuda" android:title="@string/ayuda"></item>
-    <item android:id="@+id/Acerca" android:title="@string/acerca"></item>
-    <item android:id="@+id/Creditos" android:title="@string/creditos"></item>
+    <item android:id="@+id/Ayuda" android:title="@string/ayuda" android:enabled="true"></item>
+    <item android:id="@+id/Acerca" android:title="@string/acerca" android:enabled="true"></item>
+    <item android:id="@+id/Creditos" android:title="@string/creditos" android:enabled="true"></item>
 </menu>
