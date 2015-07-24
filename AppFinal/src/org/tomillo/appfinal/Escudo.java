@@ -2,11 +2,13 @@
 
 package org.tomillo.appfinal;
 
+import java.io.Serializable;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
 
-public class Escudo implements Parcelable {
+public class Escudo implements  Serializable {
 	
 	// ===========
 	// CONSTANTES
@@ -152,20 +154,20 @@ public class Escudo implements Parcelable {
 	//=======================================
 	
 
-	@Override
-	public int describeContents() {
-		return 0;
-	}
-
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-
-		dest.writeInt(this.valor_inicial);
-		dest.writeInt(this.valor);
-		// Empieza en cero
-		dest.writeInt(this.tipoEscudo.ordinal());
-		dest.writeString(this.ruta);
-		
-	}
+//	@Override
+//	public int describeContents() {
+//		return 0;
+//	}
+//
+//	@Override
+//	public void writeToParcel(Parcel dest, int flags) {
+//
+//		dest.writeInt(this.valor_inicial);
+//		dest.writeInt(this.valor);
+//		// Empieza en cero
+//		dest.writeInt(this.tipoEscudo.ordinal());
+//		dest.writeString(this.ruta);
+//		
+//	}
 
 }

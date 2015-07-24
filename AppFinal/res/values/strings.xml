@@ -26,12 +26,11 @@
     <string name="txtVictoriasOrdenador">Victorias Ordenador</string>
     <string name="txtContadorVictoriasOrdenador" />
     <string name="title_activity_transicion_castillo">Transicion_castillo</string>
-
-   
-
     <string name="asalto">Asalto al Castillo</string>
     <string name="title_activity_pantalla_final">Pantalla_final</string>
     <string name="title_activity_pantalla_finalperdido">Pantalla_finalperdido</string>
     <string name="title_activity_transicion__heroe">Transicion_Heroe</string>
+    <string name="title_activity_activity_lucha_heroe">title_activity_activity_lucha_heroe</string>
+    <string name="title_activity_activity_castillo">title_activity_activity_castillo</string>
 
 </resources>

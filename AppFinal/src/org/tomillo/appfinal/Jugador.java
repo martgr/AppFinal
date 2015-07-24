@@ -4,11 +4,13 @@
 
 package org.tomillo.appfinal;
 
+import java.io.Serializable;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
-public class Jugador implements Parcelable {
+public class Jugador implements  Serializable  {
 
 	// ============
 	// 	Constantes
@@ -22,6 +24,7 @@ public class Jugador implements Parcelable {
 		@Override
 		public Jugador createFromParcel(Parcel source) {
 			//
+	
 			return new Jugador(source);
 		}
 
@@ -38,7 +41,7 @@ public class Jugador implements Parcelable {
 	// ========================
 
 	// Nombre del jugador
-	private String nombreJugador;
+	private String nombreJugador="NombreJug";
 	// Numero de jugadas
 	private int numJugadas;
 	// Numero de victorias
@@ -198,35 +201,7 @@ public class Jugador implements Parcelable {
 
 	}
 	
-	// Constructor con Parcelado
-	private Jugador(Parcel source) {
-		this.nombreJugador = source.readString();
-		Log.i ("jugador","Leido nombreJugador : " + this.nombreJugador);
-		this.numJugadas = source.readInt();
-		Log.i ("jugador","Leido numJugadas : " + Integer.toString(this.numJugadas));
-		this.victorias_actuales = source.readInt();
-		Log.i ("jugador","Leido VictoriasActuales : " + Integer.toString(this.victorias_actuales));		
-		this.nroBankias = source.readInt();
-		Log.i ("jugador","Leido numBankias : " + Integer.toString(this.nroBankias));		
-		this.nroActualizacionesCastillo = source.readInt();
-		Log.i ("jugador","Leido nroActualizacionesCastillo : " + Integer.toString(this.nroActualizacionesCastillo));		
-		this.puntuacion = source.readInt();
-		Log.i ("jugador","Leido puntuación : " + Integer.toString(this.puntuacion));		
-		this.TituloNobiliario = source.readInt();
-		Log.i ("jugador","Leido TituloNobiliario : " + Integer.toString(this.TituloNobiliario));		
-		this.escudoTorre = source.readParcelable(Escudo.class.getClassLoader());
-		Log.i ("jugador","Leido EscudoTorre");		
-		this.escudoRey = source.readParcelable(Escudo.class.getClassLoader());
-		Log.i ("jugador","Leido EscudoRey");
-		this.escudoNobleza = source.readParcelable(Escudo.class.getClassLoader());
-		Log.i ("jugador","Leido EscudoNobleza");		
-		this.escudoPueblo = source
-				.readParcelable(Escudo.class.getClassLoader());
-		Log.i("jugador","Leido EscudoPueblo");
-		this.heroeJugador = source.readParcelable(Heroe.class.getClassLoader());
-		Log.i("jugador","Leido Heroe del Jugador");
-		
-	}
+	
 	
 
 	//================================
@@ -313,39 +288,78 @@ public class Jugador implements Parcelable {
 	// 	Funciones que controlan en Parcelado
 	//=======================================
 	
-	@Override
-	public int describeContents() {
-		return 0;
-	}
+//	@Override
+//	public int describeContents() {
+//		return 0;
+//	}
+//
+//	@Override
+//	public void writeToParcel(Parcel dest, int flags) {
+//
+//		//dest.writeString(this.nombreJugador);
+//		dest.writeString("Nombre");
+//		Log.i("jugador","Escrito NombreJugador : " + this.nombreJugador);
+//		dest.writeInt(this.numJugadas);
+//		Log.i("jugador","Escrito NumJugadas : " + Integer.toString(this.numJugadas));
+//		dest.writeInt(this.victorias_actuales);
+//		Log.i("jugador","Escrito VictoriasActuales : " + Integer.toString(this.victorias_actuales));		
+//		dest.writeInt(this.nroBankias);
+//		Log.i("jugador","Escrito NroBankias : " + Integer.toString(this.nroBankias));		
+//		dest.writeInt(this.nroActualizacionesCastillo);
+//		Log.i("jugador","Escrito NroActualizacionesCastillo : " + Integer.toString(this.nroActualizacionesCastillo));		
+//		dest.writeInt(this.puntuacion);
+//		Log.i("jugador","Escrito Puntuacion " + Integer.toString(this.puntuacion));		
+//		dest.writeInt(this.TituloNobiliario);
+//		Log.i("jugador","Escrito Titulo Nobiliario : " + Integer.toString(this.TituloNobiliario));		
+//		dest.writeParcelable(escudoTorre, flags);
+//		Log.i("jugador","Escrito escudoTorre");
+//		dest.writeParcelable(escudoRey, flags);
+//		Log.i("jugador","Escrito escudoRey");		
+//		dest.writeParcelable(escudoNobleza, flags);
+//		Log.i("jugador","Escrito escudoNobleza");		
+//		dest.writeParcelable(escudoPueblo, flags);
+//		Log.i("jugador","Escrito escudoPueblo");		
+//		dest.writeParcelable(heroeJugador, flags);
+//		Log.i("jugador","Escrito HeroeJugador");
+//	
+//	}
+	
+	
+	
+	
+	// Constructor con Parcelado
+		private Jugador(Parcel source) {
+			Log.i("En el metodo de lectura", "Lectura");
+			this.nombreJugador = source.readString();
+			Log.i ("jugador","Leido nombreJugador : " + this.nombreJugador);
+			this.numJugadas = source.readInt();
+			Log.i ("jugador","Leido numJugadas : " + Integer.toString(this.numJugadas));
+			this.victorias_actuales = source.readInt();
+			Log.i ("jugador","Leido VictoriasActuales : " + Integer.toString(this.victorias_actuales));		
+			this.nroBankias = source.readInt();
+			Log.i ("jugador","Leido numBankias : " + Integer.toString(this.nroBankias));		
+			this.nroActualizacionesCastillo = source.readInt();
+			Log.i ("jugador","Leido nroActualizacionesCastillo : " + Integer.toString(this.nroActualizacionesCastillo));		
+			this.puntuacion = source.readInt();
+			Log.i ("jugador","Leido puntuación : " + Integer.toString(this.puntuacion));		
+			this.TituloNobiliario = source.readInt();
+			Log.i ("jugador","Leido TituloNobiliario : " + Integer.toString(this.TituloNobiliario));		
+			this.escudoTorre = source.readParcelable(Escudo.class.getClassLoader());
+			Log.i ("jugador","Leido EscudoTorre");		
+			this.escudoRey = source.readParcelable(Escudo.class.getClassLoader());
+			Log.i ("jugador","Leido EscudoRey");
+			this.escudoNobleza = source.readParcelable(Escudo.class.getClassLoader());
+			Log.i ("jugador","Leido EscudoNobleza");		
+			this.escudoPueblo = source
+					.readParcelable(Escudo.class.getClassLoader());
+			Log.i("jugador","Leido EscudoPueblo");
+			this.heroeJugador = source.readParcelable(Heroe.class.getClassLoader());
+			Log.i("jugador","Leido Heroe del Jugador");
+			
+			
 
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-
-		dest.writeString(this.nombreJugador);
-		Log.i("jugador","Escrito NombreJugador : " + this.nombreJugador);
-		dest.writeInt(this.numJugadas);
-		Log.i("jugador","Escrito NumJugadas : " + Integer.toString(this.numJugadas));
-		dest.writeInt(this.victorias_actuales);
-		Log.i("jugador","Escrito VictoriasActuales : " + Integer.toString(this.victorias_actuales));		
-		dest.writeInt(this.nroBankias);
-		Log.i("jugador","Escrito NroBankias : " + Integer.toString(this.nroBankias));		
-		dest.writeInt(this.nroActualizacionesCastillo);
-		Log.i("jugador","Escrito NroActualizacionesCastillo : " + Integer.toString(this.nroActualizacionesCastillo));		
-		dest.writeInt(this.puntuacion);
-		Log.i("jugador","Escrito Puntuacion " + Integer.toString(this.puntuacion));		
-		dest.writeInt(this.TituloNobiliario);
-		Log.i("jugador","Escrito Titulo Nobiliario : " + Integer.toString(this.TituloNobiliario));		
-		dest.writeParcelable(escudoTorre, flags);
-		Log.i("jugador","Escrito escudoTorre");
-		dest.writeParcelable(escudoRey, flags);
-		Log.i("jugador","Escrito escudoRey");		
-		dest.writeParcelable(escudoNobleza, flags);
-		Log.i("jugador","Escrito escudoNobleza");		
-		dest.writeParcelable(escudoPueblo, flags);
-		Log.i("jugador","Escrito escudoPueblo");		
-		dest.writeParcelable(heroeJugador, flags);
-		Log.i("jugador","Escrito HeroeJugador");		
-	}
+			
+		}
 	
 	
 	//========================================================================

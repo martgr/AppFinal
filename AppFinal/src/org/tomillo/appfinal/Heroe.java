@@ -3,13 +3,15 @@
 
 package org.tomillo.appfinal;
 
+import java.io.Serializable;
+
 import org.tomillo.appfinal.Escudo.GrupoEscudo;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 
-public class Heroe implements Parcelable {
+public class Heroe implements  Serializable {
 
 	// ============
 	// Constantes
@@ -378,24 +380,24 @@ public class Heroe implements Parcelable {
 	//=======================================
 
 	
-	@Override
-	public int describeContents() {
-		return 0;
-	}
-
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		/*private Escudo escudo_Cruz;
-		private Escudo escudo_Natural;
-		private Escudo escudo_Artificial; */		
-
-		dest.writeByte((byte) (this.bVivo ? 1 : 0));
-		dest.writeInt(this.nivelVida);
-		dest.writeParcelable (this.escudo_Cruz,flags);
-		dest.writeParcelable(this.escudo_Natural, flags);
-		dest.writeParcelable(this.escudo_Artificial,flags);
-		
-	}
+//	@Override
+//	public int describeContents() {
+//		return 0;
+//	}
+//
+//	@Override
+//	public void writeToParcel(Parcel dest, int flags) {
+//		/*private Escudo escudo_Cruz;
+//		private Escudo escudo_Natural;
+//		private Escudo escudo_Artificial; */		
+//
+//		dest.writeByte((byte) (this.bVivo ? 1 : 0));
+//		dest.writeInt(this.nivelVida);
+//		dest.writeParcelable (this.escudo_Cruz,flags);
+//		dest.writeParcelable(this.escudo_Natural, flags);
+//		dest.writeParcelable(this.escudo_Artificial,flags);
+//		
+//	}
 	
 	
 }
