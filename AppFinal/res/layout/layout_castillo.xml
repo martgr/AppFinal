@@ -148,8 +148,8 @@
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/btrenovar"
-                android:focusable="false"
-                android:onClick="magia" />
+                android:clickable="false"
+                android:focusable="false" />
 
         </LinearLayout>
 

@@ -1,7 +1,10 @@
 package org.tomillo.appfinal;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.Animation;
@@ -30,6 +33,30 @@ public class Transicion_Heroe extends Activity {
 		animrotate.setRepeatCount(Animation.INFINITE);
 		imgHeroe.startAnimation(animrotate);
 		txtHeroe.startAnimation(animrotate);
+		
+		
+		final Jugador jugador=(Jugador) getIntent().getSerializableExtra("PARCELABLE_Jugador");
+		final Enemigo enemigo = (Enemigo) getIntent().getSerializableExtra("PARCELABLE_Enemigo");
+
+		Log.i("Pasamos por transicion", "Pasamos");
+		 new Handler().postDelayed(new Runnable(){
+	            public void run(){
+		
+	            	Intent intent = new Intent(Transicion_Heroe.this,
+	        				ActivityLuchaHeroe.class);
+	        		intent.putExtra("PARCELABLE_Jugador", jugador);
+	        		intent.putExtra("PARCELABLE_Enemigo", enemigo);
+
+	        		startActivity(intent);
+	        		finish();
+	            };
+	        }, 4000);
+		
+		
+		
+		
+		
+	
 
 
 		

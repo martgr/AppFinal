@@ -48,7 +48,7 @@ public class MenuEscudos extends Activity {
 		escudos[8] = (ImageView) findViewById(R.id.Cortinado);
 		estrellas = (RatingBar) findViewById(R.id.ratingBarTitulo);
 		titulo = (TextView) findViewById(R.id.txtTitulo);
-		victoriasEnemigo = (TextView) findViewById(R.id.txtVictoriaOrdenador);
+		victoriasEnemigo = (TextView) findViewById(R.id.txtContadorVictoriasOrdenador);
 
 		// pone todos los escudos a invisible, cada vez que se cree la actividad
 		for (int i = 0; i < 9; i++) {
@@ -65,7 +65,7 @@ public class MenuEscudos extends Activity {
 			miJugador.setNombreJugador(nombreJugador);
 		} else {
 			// Obtenemos nuestro Parcelable desde el Intent
-			miJugador = getIntent().getParcelableExtra("PARCELABLE_Jugador");
+			miJugador = (Jugador) getIntent().getExtras().getSerializable("PARCELABLE_Jugador");
 			// Para aumentar numero de jugadas en curso:
 			miJugador.setNumJugadas(miJugador.getNumJugadas() + 1);
 		}
@@ -73,7 +73,7 @@ public class MenuEscudos extends Activity {
 		if (miEnemigo == null) {
 			miEnemigo = new Enemigo();
 		} else {
-			miEnemigo = getIntent().getParcelableExtra("PARCELABLE_Enemigo");
+			miEnemigo = (Enemigo) getIntent().getExtras().getSerializable("PARCELABLE_Enemigo");
 		}
 
 		// se muestra cada vez el nº de escudos ganados
@@ -82,20 +82,20 @@ public class MenuEscudos extends Activity {
 		}
 
 		mostrarEstrellasYRango();
+		//----------------------------------------comprobaciones
+		//estrellas.setRating(2);
 
 		// Para que aparezcan los bankias:
 		txtContadorBankias.setText(String.valueOf(miJugador.getNroBankias()));
 
 		// Para mostrar las victorias del enemigo:
-		victoriasEnemigo.setText(miEnemigo.getVictorias_actuales());
+		victoriasEnemigo.setText(String.valueOf(miEnemigo.getVictorias_actuales()));
 
 		// Para cambiar el estado del juego(ganado, perdido, continuar) y
 		// al final del juego cambiar de boton Batalla a boton Fin de Juego
 		// y rellenar puntuacionTotal, bankias y numPartidas q se pasaran como
-		// putextras a
-		// pantalla ganado o pantalla perdido. Tb se consulta a la BBDD el
-		// record y si es mayor la
-		// puntuacion se actualiza el record.
+		// putextras a pantalla ganado o pantalla perdido. Tb se consulta a la BBDD el
+		// record y si es mayor la puntuacion se actualiza el record.
 		if (miJugador.getVictorias_actuales() == 9) {
 			estadoJuego = 1;
 
@@ -110,7 +110,7 @@ public class MenuEscudos extends Activity {
 			usdbh.actualizarRecord(nombreJugador, puntuacionTotal);
 
 			////DESCOMENTAR CUANDO ESTE EL RECURSO
-			//ibBatalla.setImageResource(R.drawable.findejuego);
+			ibBatalla.setBackgroundResource(R.drawable.btfin);
 		} else if (miEnemigo.getVictorias_actuales() == 9
 				|| miJugador.getEscudoTorre().getValor() <= 0) {
 			estadoJuego = -1;
@@ -121,9 +121,12 @@ public class MenuEscudos extends Activity {
 			numPartidas = miJugador.getNumJugadas();
 
 			//DESCOMENTAR CUANDO ESTE EL RECURSO
-			//ibBatalla.setImageResource(R.drawable.findejuego);
+			ibBatalla.setBackgroundResource(R.drawable.btfin);
 		} else {
 			estadoJuego = 0;
+			//-----------------------------------comprobaciones
+			//ibBatalla.setBackgroundResource(R.drawable.btfin);
+			
 		}
 
 	}
@@ -154,35 +157,36 @@ public class MenuEscudos extends Activity {
 	// Metodo salir
 	public void salir(View v) {
 		System.exit(0);
+		
 	}
 
 	
 	//DESCOMENTAR CUANDO ESTEN LAS PANTALLAS DEL FINAL
 	
 	// Metodo batalla
-//	public void batallaOFinDeJuego(View v) {
-//		if (estadoJuego == 1) {
-//			Intent i = new Intent(this, finalJuegoGanado.class);
-//			i.putExtra("clavePuntuacion", puntuacionTotal);
-//			i.putExtra("claveBankia", bankias);
-//			i.putExtra("claveNumPartidas", numPartidas);
-//			startActivity(i);
-//		} else {
-//			if (estadoJuego == -1) {
-//				Intent i = new Intent(this, finalJuegoPerdido.class);
-//				i.putExtra("clavePuntuacion", puntuacionTotal);
-//				i.putExtra("claveBankia", bankias);
-//				i.putExtra("claveNumPartidas", numPartidas);
-//				startActivity(i);
-//			} else {
-//				if (estadoJuego == 0) {
-//					Intent i = new Intent(this, transicionCastillo.class);
-//					i.putExtra("PARCELABLE_Jugador", miJugador);
-//					i.putExtra("PARCELABLE_Enemigo", miEnemigo);
-//					startActivity(i);
-//				}
-//			}
-//		}
-//
-//	}
+	public void batallaOFinDeJuego(View v) {
+		if (estadoJuego == 1) {
+			Intent i = new Intent(this, Pantalla_finalganado.class);
+			i.putExtra("clavePuntuacion", puntuacionTotal);
+			i.putExtra("claveBankia", bankias);
+			i.putExtra("claveNumPartidas", numPartidas);
+			startActivity(i);
+		} else {
+			if (estadoJuego == -1) {
+				Intent i = new Intent(this, Pantalla_finalperdido.class);
+				i.putExtra("clavePuntuacion", puntuacionTotal);
+				i.putExtra("claveBankia", bankias);
+				i.putExtra("claveNumPartidas", numPartidas);
+				startActivity(i);
+			} else {
+				if (estadoJuego == 0) {
+					Intent i = new Intent(this, Transicion_castillo.class);
+					i.putExtra("PARCELABLE_Jugador", miJugador);
+					i.putExtra("PARCELABLE_Enemigo", miEnemigo);
+					startActivity(i);
+				}
+			}
+		}
+
+	}
 }

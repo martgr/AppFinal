@@ -42,13 +42,13 @@ public class Pantalla_finalganado extends Activity{
 		//recibimos un valor y se lo asignamos a un string
 		String PuntosGanados=getIntent().getExtras().getString("clavePuntuacion");
 		//le establecemos el valor recibido de puntuacion
-		puntuacionGanada.setText(PuntosGanados);
+		puntuacionGanada.setText(String.valueOf(PuntosGanados));
 		
 		String numPartidas=getIntent().getExtras().getString("claveNumPartidas");
-		numPartidasGanadas.setText(numPartidas);
+		numPartidasGanadas.setText(String.valueOf(numPartidas));
 		
 		String bankia=getIntent().getExtras().getString("claveBankia");
-		numBankias.setText(bankia);
+		numBankias.setText(String.valueOf(bankia));
 		
 				
 	}

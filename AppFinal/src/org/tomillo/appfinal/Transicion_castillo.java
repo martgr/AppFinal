@@ -1,7 +1,9 @@
 package org.tomillo.appfinal;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -32,8 +34,22 @@ public class Transicion_castillo extends Activity {
 		animFadein.setRepeatCount(Animation.INFINITE);
 		imgCastillo.startAnimation(animFadein);
 		txAsalto.startAnimation(animFadein);
+		
+		final Jugador jugador=(Jugador) getIntent().getSerializableExtra("PARCELABLE_Jugador");
+		final Enemigo enemigo = (Enemigo) getIntent().getSerializableExtra("PARCELABLE_Enemigo");
 
 		
+		 new Handler().postDelayed(new Runnable(){
+	            public void run(){
+			
+	            	Intent intent = new Intent(Transicion_castillo.this, ActivityCastillo.class);
+	        		intent.putExtra("PARCELABLE_Jugador", jugador);
+	        		intent.putExtra("PARCELABLE_Enemigo", enemigo);
+	        		startActivity(intent);
+	        		finish();
+	            };
+	        }, 4000);
+
 
 	}
 

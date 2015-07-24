@@ -52,14 +52,10 @@ public class ActivityLuchaHeroe extends Activity {
 		bMurioHeroe = false;
 		bEmpate = false;
 
-		//jugador = getIntent().getParcelableExtra("PARCELABLE_Jugador");
 
 		jugador=(Jugador) getIntent().getSerializableExtra("PARCELABLE_Jugador");
-		Log.i("Valores de jugador",String.valueOf(jugador.getCartasJugador()));
-
 		enemigo = (Enemigo) getIntent().getSerializableExtra("PARCELABLE_Enemigo");
-		Log.i("Valores de enemigo",
-				String.valueOf(enemigo.getVictorias_actuales()));
+
 
 		// Vemos si murio alguien
 		bVivoEnemigo = enemigo.isbVivo();
@@ -68,11 +64,12 @@ public class ActivityLuchaHeroe extends Activity {
 		// Algun componenente muerto
 		if (!bVivoEnemigo || !bVivoHeroe) {
 
-			Intent it = new Intent(this, MenuEscudos.class);
+			Intent it = new Intent(this, Transicion_Heroe.class);
 			it.putExtra("PARCELABLE_Jugador", jugador);
 			it.putExtra("PARCELABLE_Enemigo", enemigo);
 
 			startActivity(it);
+			finish();
 		}
 
 		setContentView(R.layout.layoutluchaheroe);

@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/background"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -11,28 +12,35 @@
 
         <RatingBar
             android:id="@+id/ratingBarTitulo"
+            style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
             android:clickable="false"
+            android:maxHeight="30dp"
+            android:maxWidth="30dp"
             android:numStars="3" />
 
         <TextView
             android:id="@+id/txtTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
             android:text="TextView" />
 
         <TextView
             android:id="@+id/txtContadorBankias"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginLeft="120dp"
             android:text="TextView" />
 
         <ImageView
             android:id="@+id/imageBankia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/bankia" />
     </LinearLayout>
 
     <GridLayout
@@ -47,21 +55,21 @@
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_marginLeft="20dp"
             android:layout_row="0"
-            android:src="@drawable/ic_launcher" />
+            android:background="@drawable/puntuacion1" />
 
         <ImageButton
             android:id="@+id/Losanjado"
             android:layout_column="2"
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_row="0"
-            android:src="@drawable/ic_launcher" />
+            android:background="@drawable/puntuacion2" />
 
         <ImageButton
             android:id="@+id/Fuselado"
             android:layout_column="3"
             android:layout_marginRight="20dp"
             android:layout_row="0"
-            android:src="@drawable/ic_launcher" />
+            android:background="@drawable/puntuacion3" />
 
         <ImageButton
             android:id="@+id/Cantonado"
@@ -69,20 +77,20 @@
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_marginLeft="20dp"
             android:layout_row="1"
-            android:src="@drawable/ic_launcher" />
+            android:background="@drawable/puntuacion4" />
 
         <ImageButton
             android:id="@+id/Fretado"
             android:layout_column="2"
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_row="1"
-            android:src="@drawable/ic_launcher" />
+            android:background="@drawable/puntuacion5" />
 
         <ImageButton
             android:id="@+id/Papelonado"
             android:layout_column="3"
             android:layout_row="1"
-            android:src="@drawable/ic_launcher" />
+            android:background="@drawable/puntuacion6" />
 
         <ImageButton
             android:id="@+id/Aplumado"
@@ -90,39 +98,40 @@
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_marginLeft="20dp"
             android:layout_row="2"
-            android:src="@drawable/ic_launcher" />
+            android:background="@drawable/puntuacion7" />
 
         <ImageButton
             android:id="@+id/Flanqueado"
             android:layout_column="2"
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_row="2"
-            android:src="@drawable/ic_launcher" />
+            android:background="@drawable/puntuacion8" />
 
         <ImageButton
             android:id="@+id/Cortinado"
             android:layout_column="3"
             android:layout_row="2"
-            android:src="@drawable/ic_launcher" />
+            android:background="@drawable/puntuacion9" />
+
     </GridLayout>
 
     <LinearLayout
-        android:layout_width="148dp"
-        android:layout_height="wrap_content" >
+        android:layout_width="match_parent"
+        android:layout_height="28dp" >
 
         <TextView
             android:id="@+id/txtVictoriaOrdenador"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="30dp"
-            android:text="Victorias Ordenador" />
+            android:layout_marginLeft="15dp"
+            android:text="@string/txtVictoriasOrdenador" />
 
         <TextView
             android:id="@+id/txtContadorVictoriasOrdenador"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_weight="0.09"
             android:text="text" />
 
     </LinearLayout>
@@ -135,19 +144,20 @@
             android:id="@+id/Batalla"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/btbatalla"
             android:baselineAlignBottom="false"
             android:cropToPadding="false"
-            android:onClick="batallaOFinDeJuego"
-            android:src="@drawable/ic_launcher" />
+            android:onClick="batallaOFinDeJuego" />
 
         <ImageButton
             android:id="@+id/salir"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="salir"
-            android:src="@drawable/ic_launcher" />
+            android:layout_width="95dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/btsalir"
+            android:onClick="salir" />
 
     </LinearLayout>
 

@@ -37,10 +37,10 @@ public class Pantalla_finalperdido extends Activity {
 			puntuacionPerdido.setText(puntosPerdidos);
 			
 			String bankia=getIntent().getExtras().getString("claveBankia");
-			numBankias.setText(bankia);
+			numBankias.setText(String.valueOf(bankia));
 			
 			String numPartidas=getIntent().getExtras().getString("claveNumPartidas");
-			numPartidasPerdidas.setText(numPartidas);
+			numPartidasPerdidas.setText(String.valueOf(numPartidas));
 		}
 	}
 	
