@@ -1,0 +1,239 @@
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/background"
+    android:focusable="true"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+        
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+        </LinearLayout>
+
+    </LinearLayout>
+    
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" >
+
+        <TextView
+            android:id="@+id/tvTorre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/corner"
+            android:gravity="center_horizontal"
+            android:text="12"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvRey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/corner"
+            android:gravity="center"
+            android:text="1"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvNobleza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/corner"
+            android:gravity="center"
+            android:scrollHorizontally="false"
+            android:text="12"
+            android:textSize="24sp" />
+        
+          <TextView
+              android:id="@+id/tvPueblo"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="20dp"
+              android:layout_marginRight="20dp"
+              android:layout_weight="1"
+              android:background="@drawable/corner"
+              android:gravity="center"
+              android:scrollHorizontally="false"
+              android:text="12"
+              android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="25dp" >
+
+            <ImageView
+                android:id="@+id/ivTorre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_launcher" />
+
+            <ImageView
+                android:id="@+id/ivRey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_launcher" />
+
+            <ImageView
+                android:id="@+id/ivNobleza"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_launcher" />
+            
+              <ImageView
+                  android:id="@+id/ivPueblo"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="5dp"
+                  android:src="@drawable/ic_launcher" />
+
+        </LinearLayout>
+
+ </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="25dp" >
+
+            <ImageView
+                android:id="@+id/ivAccionCastillo"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:focusable="true"
+                android:src="@drawable/btatacar2" />
+
+            <ImageButton
+                android:id="@+id/ivCambiarCartas"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/btrenovar"
+                android:focusable="false"
+                android:onClick="magia" />
+
+        </LinearLayout>
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="20dp" >
+
+        <TextView
+            android:id="@+id/tvReyEnemigo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/corner"
+            android:gravity="center"
+           
+            android:textSize="24sp"
+            />
+
+        <TextView
+            android:id="@+id/tvNoblezaEnemigo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="55dp"
+            android:background="@drawable/corner"
+            android:gravity="center"
+            android:scrollHorizontally="false"
+            
+            android:textSize="24sp" />
+        
+          <TextView
+              android:id="@+id/tvPuebloEnemigo"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_marginLeft="30dp"
+              android:background="@drawable/corner"
+            android:gravity="center"
+              android:textSize="24sp" />
+
+    </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+    
+    </LinearLayout>
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp" >
+
+            <ImageView
+                android:id="@+id/ivReyEnemigo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/ic_launcher" />
+
+            <ImageView
+                android:id="@+id/ivNoblezaEnemiga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/ic_launcher" />
+            
+              <ImageView
+                  android:id="@+id/ivPuebloEnemigo"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="30dp"
+                  android:src="@drawable/ic_launcher" />
+
+        </LinearLayout>
+
+ </LinearLayout>
+    
+  </LinearLayout>
+  

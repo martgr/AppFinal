@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical|center_horizontal"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/txGanado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_margin="5dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_vertical|center"
+        android:text="¡HAS GANADO!"
+        android:textColor="#CCFF00"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/txPuntuaciong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/Verde" />
+
+    <TextView
+        android:id="@+id/txNumPartidasg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+      android:textColor="@color/Verde"/>
+
+    <TextView
+        android:id="@+id/txBankiasg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+         android:textColor="@color/Verde"/>
+
+    <VideoView
+        android:id="@+id/videoGanado"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/txGanado"
+        android:layout_centerHorizontal="true" />
+
+</LinearLayout>
