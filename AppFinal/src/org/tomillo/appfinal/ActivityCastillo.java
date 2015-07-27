@@ -3,6 +3,8 @@ package org.tomillo.appfinal;
 import org.tomillo.appfinal.Escudo.GrupoEscudo;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -138,7 +140,7 @@ public class ActivityCastillo extends Activity {
 
 	
 				// Lanzamos Heroe
-				//mostrarToast(aux2, aux3, aux4);
+				mostrarDialogo(aux2, aux3, aux4);
 
 				Intent intent = new Intent(ActivityCastillo.this,
 						Transicion_Heroe.class);
@@ -243,6 +245,35 @@ public class ActivityCastillo extends Activity {
 		imv3.setImageResource(id);
 
 	}
+	
+	
+	public void mostrarDialogo (int rey , int noble , int pueblo) {
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+		        ActivityCastillo.this);
+		alertDialog.setTitle("ATAQUE ENEMIGO!!");
+		alertDialog.setMessage("Ataque rey enemigo : " + rey + "\n Ataque noble enemigo : " + noble + "\n Ataque pueblo enemigo : " + pueblo);
+
+		alertDialog.setPositiveButton("Continuar Asedio",
+		        new DialogInterface.OnClickListener() {
+		          
+		            public void onClick(DialogInterface dialogInterface, int i) {
+		                
+		                Intent myIntent = new Intent(getApplicationContext(),
+		                		Transicion_Heroe.class);
+		                Bundle b = new Bundle();
+		             
+		                myIntent.putExtras(b);
+
+		                startActivity(myIntent);
+		                
+		            }
+		        });
+		AlertDialog dialog = alertDialog.create();
+		alertDialog.show();
+	}
+
+	
+	
 
 
 
