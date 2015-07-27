@@ -126,7 +126,7 @@ public class ActivityLuchaHeroe extends Activity {
 					Torre.setValor(valor);
 				}
 
-				// Cojemos el nivel de vida enemigo
+				// Cogemos el nivel de vida enemigo
 				int vidaActualEnemigo = enemigo.getNivelVida();
 				// Atacamos
 				int vidadevuelta = jugador.getHeroeJugador()
@@ -194,6 +194,7 @@ public class ActivityLuchaHeroe extends Activity {
 		}
 
 		Intent it = new Intent(this, MenuEscudos.class);
+		Log.i("Despues de luchar heroe estas son las victorias", String.valueOf(jugador.getVictorias_actuales()));
 		it.putExtra("PARCELABLE_Jugador", jugador);
 		it.putExtra("PARCELABLE_Enemigo", enemigo);
 		startActivity(it);

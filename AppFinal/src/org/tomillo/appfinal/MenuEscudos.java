@@ -57,15 +57,17 @@ public class MenuEscudos extends Activity {
 
 		// Para crear un jugador cada vez que se inicie la partida y recoger el
 		// nombre jugador
+		miJugador = (Jugador) getIntent().getExtras().getSerializable("PARCELABLE_Jugador");
+		
 		if (miJugador == null) {
 			miJugador = new Jugador();
-		
+		Log.i("Hemos creado un nuevo jugador", "Hemos creado un nuevo jugador");
 			nombreJugador = getIntent().getExtras().getString(
 					"claveNombreJugador");
 			miJugador.setNombreJugador(nombreJugador);
 		} else {
 			// Obtenemos nuestro Parcelable desde el Intent
-			miJugador = (Jugador) getIntent().getExtras().getSerializable("PARCELABLE_Jugador");
+			//miJugador = (Jugador) getIntent().getExtras().getSerializable("PARCELABLE_Jugador");
 			// Para aumentar numero de jugadas en curso:
 			miJugador.setNumJugadas(miJugador.getNumJugadas() + 1);
 		}

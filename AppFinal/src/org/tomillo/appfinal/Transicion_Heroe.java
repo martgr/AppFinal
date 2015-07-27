@@ -38,7 +38,7 @@ public class Transicion_Heroe extends Activity {
 		final Jugador jugador=(Jugador) getIntent().getSerializableExtra("PARCELABLE_Jugador");
 		final Enemigo enemigo = (Enemigo) getIntent().getSerializableExtra("PARCELABLE_Enemigo");
 
-		Log.i("Pasamos por transicion", "Pasamos");
+		Log.i("Pasamos por transicion Heroe con las siguientes victorias", String.valueOf(jugador.getVictorias_actuales()));
 		 new Handler().postDelayed(new Runnable(){
 	            public void run(){
 		

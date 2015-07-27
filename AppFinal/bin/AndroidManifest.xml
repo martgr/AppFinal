@@ -27,6 +27,10 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@android:style/Theme.NoTitleBar" >
+             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Configuracion"
@@ -36,11 +40,7 @@
             android:name=".Escudo1"
             android:label="@string/title_activity_escudo"
             android:theme="@android:style/Theme.NoTitleBar" >
-               <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="Preferencias"
@@ -50,6 +50,8 @@
             android:name=".MenuEscudos"
             android:label="@string/title_activity_menu_escudos"
             android:theme="@android:style/Theme.NoTitleBar" >
+            
+-
           
         </activity>
         <activity
@@ -85,12 +87,7 @@
             android:name=".ActivityCastillo"
             android:label="@string/title_activity_activity_castillo"
             android:theme="@android:style/Theme.NoTitleBar" >
-             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
--
+            
         </activity>
     </application>
 

@@ -276,7 +276,7 @@ public class Jugador implements  Serializable  {
 		escudoNobleza = new Escudo(aux, Escudo.GrupoEscudo.nobleza);
 		// Asignamos el escudo del pueblo
 		aux = (int) (Math.random() * 6) + 1;
-		escudoNobleza = new Escudo(aux, Escudo.GrupoEscudo.pueblo);
+		escudoPueblo = new Escudo(aux, Escudo.GrupoEscudo.pueblo);
 
 	}
 

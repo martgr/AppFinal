@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -38,6 +39,7 @@ public class Transicion_castillo extends Activity {
 		final Jugador jugador=(Jugador) getIntent().getSerializableExtra("PARCELABLE_Jugador");
 		final Enemigo enemigo = (Enemigo) getIntent().getSerializableExtra("PARCELABLE_Enemigo");
 
+		Log.i("Pasamos por transicion Castillo con las siguientes victorias", String.valueOf(jugador.getVictorias_actuales()));
 		
 		 new Handler().postDelayed(new Runnable(){
 	            public void run(){

@@ -45,13 +45,13 @@ public class ActivityCastillo extends Activity {
 		// Descomentar cuando se pruebe app final
 
 		// Recogemos heroe y enemigo
-		// jugador = getIntent().getParcelableExtra("PARCELABLE_Jugador");
-		// enemigo = getIntent().getParcelableExtra("PARCELABLE_Enemigo");
-		//
+		 jugador = (Jugador) getIntent().getSerializableExtra("PARCELABLE_Jugador");
+		 enemigo = (Enemigo) getIntent().getSerializableExtra("PARCELABLE_Enemigo");
+		
 
-		// SÓLO PARA PRUEBAS
-		jugador = new Jugador();
-		enemigo = new Enemigo();
+	// SÓLO PARA PRUEBAS
+		//jugador = new Jugador();
+		//enemigo = new Enemigo();
 
 		Torre = jugador.getEscudoTorre();
 		Rey = jugador.getEscudoRey();
@@ -73,11 +73,11 @@ public class ActivityCastillo extends Activity {
 
 		// cargar escudos enemigo
 		//
-		final int aux2 = (int) Math.random() * 11 + 1;
+		final int aux2 = (int) (Math.random() * 12) + 1;
 		ReyEnemigo = new Escudo(aux2, GrupoEscudo.rey);
-		final int aux3 = (int) Math.random() * 11 + 1;
+		final int aux3 = (int) (Math.random() * 12) + 1;
 		NoblezaEnemigo = new Escudo(aux3, GrupoEscudo.nobleza);
-		final int aux4 = (int) Math.random() * 5 + 1;
+		final int aux4 = (int) (Math.random() * 6) + 1;
 		PuebloEnemigo = new Escudo(aux4, GrupoEscudo.pueblo);
 
 		Torre = jugador.getEscudoTorre();
@@ -125,6 +125,7 @@ public class ActivityCastillo extends Activity {
 					jugador.getEscudoTorre().setValor(aux);
 
 					jugador.AumentarVictorias();
+					
 
 				} else {
 
@@ -162,10 +163,10 @@ public class ActivityCastillo extends Activity {
 					jugador.setNroActualizacionesCastillo(jugador
 							.getNroActualizacionesCastillo() - 1);
 
-					Log.i("Nobleza sin cambiada", jugador.getEscudoPueblo().getRuta());
+					Log.i("Pueblo sin cambiada", jugador.getEscudoPueblo().getRuta());
 					jugador.CambiarCartasCastillo();
 
-					Log.i("Nobleza cambiada", jugador.getEscudoPueblo().getRuta());
+					Log.i("Pueblo cambiada", jugador.getEscudoPueblo().getRuta());
 					MostrarDatos();
 
 				}
