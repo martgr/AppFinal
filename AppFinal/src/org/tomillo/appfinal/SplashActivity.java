@@ -61,6 +61,7 @@ public class SplashActivity extends Activity {
 			public void onClick(View v) {
 				Intent Logo = new Intent (SplashActivity.this,Escudo.class);
 				startActivity(Logo);
+				finish();
 				
 			}
 		});

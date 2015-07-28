@@ -22,6 +22,7 @@ public class Escudo1 extends Activity {
                 }finally{
                     Intent actividaPrincipal = new Intent(Escudo1.this, LoginActivity.class);
                     startActivity(actividaPrincipal);
+                    finish();
                 }                
             }
         };

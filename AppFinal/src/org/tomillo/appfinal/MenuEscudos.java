@@ -32,7 +32,7 @@ public class MenuEscudos extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Log.i("Antes del setContent","Antes ");
+
 		setContentView(R.layout.activity_menu_escudos);
 		 ibBatalla = (ImageButton) findViewById(R.id.Batalla);
 		  txtContadorBankias = (TextView) findViewById(R.id.txtContadorBankias);
@@ -78,10 +78,12 @@ public class MenuEscudos extends Activity {
 			miEnemigo = new Enemigo();
 		}
 
-		// se muestra cada vez el nº de escudos ganados
+		// se muestra cada vez el nº de escudos ganados, hasta un máximo de 9 escudos 
+		//aunque las partidas ganadas sean 10
 		
-		for (int i = 0; i < miJugador.getVictorias_actuales(); i++) {
+		for (int i = 0; (i < miJugador.getVictorias_actuales()&&i <9); i++) {
 			escudos[i].setVisibility(View.VISIBLE);
+
 		}
 
 		mostrarEstrellasYRango();
@@ -100,7 +102,7 @@ public class MenuEscudos extends Activity {
 		// putextras a pantalla ganado o pantalla perdido. Tb se consulta a la BBDD el
 		// record y si es mayor la puntuacion se actualiza el record.
 		//---------------el 2 ----------------------------------------------------------------
-		if (miJugador.getVictorias_actuales() >= 2) {
+		if (miJugador.getVictorias_actuales() >= 9) {
 			estadoJuego = 1;
 
 			puntuacionTotal = miJugador.getPuntuacion()
@@ -113,14 +115,12 @@ public class MenuEscudos extends Activity {
 
 			//comprobacion---------------------------------------------
 			//usdbh.actualizarRecord(miJugador.getNombreJugador(), 14);
-			Log.i("puntuacionTotal", String.valueOf(puntuacionTotal));
-			//Log.i("nombre", miJugador.getNombreJugador());
 			//---------------------------------------------------------
 			usdbh.actualizarRecord(miJugador.getNombreJugador(), puntuacionTotal, bankias);
 
-			////DESCOMENTAR CUANDO ESTE EL RECURSO
+	
 			ibBatalla.setBackgroundResource(R.drawable.btfin);
-		} else if (miEnemigo.getVictorias_actuales() == 9
+		} else if (miEnemigo.getVictorias_actuales() >= 9
 				|| miJugador.getEscudoTorre().getValor() <= 0) {
 			estadoJuego = -1;
 
@@ -129,7 +129,7 @@ public class MenuEscudos extends Activity {
 			bankias = miJugador.getNroBankias();
 			numPartidas = miJugador.getNumJugadas();
 
-			//DESCOMENTAR CUANDO ESTE EL RECURSO
+	
 			ibBatalla.setBackgroundResource(R.drawable.btfin);
 		} else {
 			estadoJuego = 0;
@@ -165,7 +165,7 @@ public class MenuEscudos extends Activity {
 
 	// Metodo salir
 	public void salir(View v) {
-		System.exit(0);
+		finish();
 		
 	}
 
@@ -180,6 +180,7 @@ public class MenuEscudos extends Activity {
 			i.putExtra("claveBankia", bankias);
 			i.putExtra("claveNumPartidas", numPartidas);
 			startActivity(i);
+			finish();
 		} else {
 			if (estadoJuego == -1) {
 				Intent i = new Intent(this, Pantalla_finalperdido.class);
@@ -187,12 +188,14 @@ public class MenuEscudos extends Activity {
 				i.putExtra("claveBankia", bankias);
 				i.putExtra("claveNumPartidas", numPartidas);
 				startActivity(i);
+				finish();
 			} else {
 				if (estadoJuego == 0) {
 					Intent i = new Intent(this, Transicion_castillo.class);
 					i.putExtra("PARCELABLE_Jugador", miJugador);
 					i.putExtra("PARCELABLE_Enemigo", miEnemigo);
 					startActivity(i);
+					finish();
 				}
 			}
 		}

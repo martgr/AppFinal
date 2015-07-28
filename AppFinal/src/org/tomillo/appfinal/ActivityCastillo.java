@@ -38,6 +38,8 @@ public class ActivityCastillo extends Activity {
 	// Puntuaciones de cada jugador o enemigo
 	int puntosHeroe = 0;
 	int puntosEnemigo = 0;
+	
+	boolean ganadoJugador=false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -118,10 +120,8 @@ public class ActivityCastillo extends Activity {
 				
 				
 
-				Log.i("Puntos heroe", String.valueOf(puntosHeroe));
-				Log.i("Puntos enemigo", String.valueOf(puntosEnemigo));
 				if (puntosHeroe > puntosEnemigo) {
-
+					ganadoJugador=true;
 					int aux = jugador.getEscudoTorre().getValor();
 					aux++;
 					jugador.getEscudoTorre().setValor(aux);
@@ -141,14 +141,6 @@ public class ActivityCastillo extends Activity {
 	
 				//Se muestra el diálogo con la puntuación obtenida
 				mostrarDialogo(aux2, aux3, aux4);
-				// Lanzamos Heroe
-				Intent intent = new Intent(ActivityCastillo.this,
-						Transicion_Heroe.class);
-				intent.putExtra("PARCELABLE_Jugador", jugador);
-				intent.putExtra("PARCELABLE_Enemigo", enemigo);
-
-				startActivity(intent);
-
 			}
 
 		});
@@ -158,8 +150,8 @@ public class ActivityCastillo extends Activity {
 
 			@Override
 			public void onClick(View v) {
-					Log.i("Hemos llamado a remover", "Hemos llamado a remover");
-				
+					
+
 				if (jugador.getNroActualizacionesCastillo() > 0) {
 
 					jugador.setNroActualizacionesCastillo(jugador
@@ -169,6 +161,10 @@ public class ActivityCastillo extends Activity {
 				
 					MostrarDatos();
 
+				}
+				else {
+					Toast tos = Toast.makeText(getApplicationContext(), "No te quedan renovaciones",Toast.LENGTH_SHORT);
+					tos.show();
 				}
 			}
 		});
@@ -246,10 +242,13 @@ public class ActivityCastillo extends Activity {
 	
 	
 	public void mostrarDialogo (int rey , int noble , int pueblo) {
+		
+		
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(
 		        ActivityCastillo.this);
-		alertDialog.setTitle("ATAQUE ENEMIGO!!");
-		alertDialog.setMessage("Ataque rey enemigo : " + rey + "\n Ataque noble enemigo : " + noble + "\n Ataque pueblo enemigo : " + pueblo);
+		if(ganadoJugador) alertDialog.setTitle("Has vencido en el castillo");
+		else alertDialog.setTitle("Has perdido en el castillo");
+		alertDialog.setMessage("Rey enemigo : " + rey + "\nNoble enemigo : " + noble + "\nPueblo enemigo : " + pueblo);
 
 		alertDialog.setPositiveButton("Continuar Asedio",
 		        new DialogInterface.OnClickListener() {
@@ -264,6 +263,7 @@ public class ActivityCastillo extends Activity {
 							intent.putExtra("PARCELABLE_Enemigo", enemigo);
 
 							startActivity(intent);
+							finish();
 						} else {
 							Intent intent = new Intent(ActivityCastillo.this,
 									MenuEscudos.class);
@@ -271,6 +271,7 @@ public class ActivityCastillo extends Activity {
 							intent.putExtra("PARCELABLE_Enemigo", enemigo);
 							
 							startActivity(intent);
+							finish();
 							
 						}
 		                

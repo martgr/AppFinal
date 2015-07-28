@@ -4,13 +4,10 @@ import org.tomillo.appfinal.Escudo.GrupoEscudo;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -68,7 +65,7 @@ public class ActivityLuchaHeroe extends Activity {
 		// Algun componenente muerto
 		if (!bVivoEnemigo || !bVivoHeroe) {
 
-			Intent it = new Intent(this, Transicion_Heroe.class);
+			Intent it = new Intent(this, MenuEscudos.class);
 			it.putExtra("PARCELABLE_Jugador", jugador);
 			it.putExtra("PARCELABLE_Enemigo", enemigo);
 
@@ -147,6 +144,7 @@ public class ActivityLuchaHeroe extends Activity {
 					// MURIO EL ENEMIGO
 					jugador.ActualizarPuntuacionHeroe();
 					bMurioEnemigo = true;
+					enemigo.setbVivo(false);
 					Toast toas = Toast.makeText(this,
 							"Has derrotado al enemigo. Ha muerto", 3000);
 					toas.setGravity(Gravity.CENTER, 0, 0);
@@ -168,6 +166,7 @@ public class ActivityLuchaHeroe extends Activity {
 				it.putExtra("PARCELABLE_Jugador", jugador);
 				it.putExtra("PARCELABLE_Enemigo", enemigo);
 				startActivity(it);
+				finish();
 
 			}
 
@@ -212,24 +211,25 @@ public class ActivityLuchaHeroe extends Activity {
 					bVivoHeroe = false;
 					// MURIO EL HEROE
 					bMurioHeroe = true;
+					jugador.getHeroeJugador().setbVivo(false);
 					Toast t = Toast.makeText(this, "Has muerto", 3000);
 					toas.setGravity(Gravity.CENTER, 0, 0);
 					t.show();
 
-				} else {
-					bGanoEnemigo = true;
-					Toast tos = Toast.makeText(this, "Ha vencido el Enemigo",
-							3000);
-					toas.setGravity(Gravity.CENTER, 0, 0);
-					tos.show();
 				}
+				// else {
+				// bGanoEnemigo = true;
+				// Toast tos = Toast.makeText(this, "Ha vencido el Enemigo",
+				// 3000);
+				// toas.setGravity(Gravity.CENTER, 0, 0);
+				// tos.show();
+				// }
 				MostrarDatos();
 				Intent it = new Intent(this, MenuEscudos.class);
-				Log.i("Despues de luchar heroe estas son las victorias",
-						String.valueOf(jugador.getVictorias_actuales()));
 				it.putExtra("PARCELABLE_Jugador", jugador);
 				it.putExtra("PARCELABLE_Enemigo", enemigo);
 				startActivity(it);
+				finish();
 
 			}
 
@@ -288,11 +288,10 @@ public class ActivityLuchaHeroe extends Activity {
 				MostrarDatos();
 
 				Intent it = new Intent(this, MenuEscudos.class);
-				Log.i("Después de luchar heroe estas son las victorias",
-						String.valueOf(jugador.getVictorias_actuales()));
 				it.putExtra("PARCELABLE_Jugador", jugador);
 				it.putExtra("PARCELABLE_Enemigo", enemigo);
 				startActivity(it);
+				finish();
 
 			}
 
@@ -304,11 +303,10 @@ public class ActivityLuchaHeroe extends Activity {
 
 				jugador.AumentarBankias(2);
 				Intent it = new Intent(this, MenuEscudos.class);
-				Log.i("Después de luchar heroe estas son las victorias",
-						String.valueOf(jugador.getVictorias_actuales()));
 				it.putExtra("PARCELABLE_Jugador", jugador);
 				it.putExtra("PARCELABLE_Enemigo", enemigo);
 				startActivity(it);
+				finish();
 
 			}
 
@@ -347,22 +345,22 @@ public class ActivityLuchaHeroe extends Activity {
 					bVivoHeroe = false;
 					// MURIO EL HEROE
 					bMurioHeroe = true;
-					Toast t = Toast.makeText(this, "Has muerto", 3000);
+					Toast t = Toast.makeText(this, "Tu héroe ha muerto", 3000);
 					t.setGravity(Gravity.CENTER, 0, 0);
 					t.show();
 
 				} else {
 					bGanoEnemigo = true;
-					Toast tos = Toast.makeText(this, "Ha vencido el Enemigo",
-							3000);
-					tos.setGravity(Gravity.CENTER, 0, 0);
-					tos.show();
-					Intent it = new Intent(this, MenuEscudos.class);
-					Log.i("Despues de luchar heroe estas son las victorias",
-							String.valueOf(jugador.getVictorias_actuales()));
-					it.putExtra("PARCELABLE_Jugador", jugador);
-					it.putExtra("PARCELABLE_Enemigo", enemigo);
-					startActivity(it);
+					// Toast tos = Toast.makeText(this, "Ha vencido el Enemigo",
+					// 3000);
+					// tos.setGravity(Gravity.CENTER, 0, 0);
+					// tos.show();
+					// Intent it = new Intent(this, MenuEscudos.class);
+					// Log.i("Despues de luchar heroe estas son las victorias",
+					// String.valueOf(jugador.getVictorias_actuales()));
+					// it.putExtra("PARCELABLE_Jugador", jugador);
+					// it.putExtra("PARCELABLE_Enemigo", enemigo);
+					// startActivity(it);
 				}
 				MostrarDatos();
 				Intent it = new Intent(this, MenuEscudos.class);
@@ -371,6 +369,7 @@ public class ActivityLuchaHeroe extends Activity {
 				it.putExtra("PARCELABLE_Jugador", jugador);
 				it.putExtra("PARCELABLE_Enemigo", enemigo);
 				startActivity(it);
+				finish();
 
 			}
 
@@ -379,28 +378,28 @@ public class ActivityLuchaHeroe extends Activity {
 
 	public void magia(View v) {
 
-		int fuerzaHeroe = escudoheroe.getValor();
-		int fuerzaEjercito1 = escudoEjercito1.getValor();
-		int fuerzaEjercito2 = escudoEjercito2.getValor();
-		int fuerzaEnemigo = escudoheroeenemigo.getValor();
-		int fuerzaEjercitoEnemigo1 = escudoenemigo1.getValor();
-		int fuerzaEjercitoEnemigo2 = escudoenemigo2.getValor();
+		// int fuerzaHeroe = escudoheroe.getValor();
+		// int fuerzaEjercito1 = escudoEjercito1.getValor();
+		// int fuerzaEjercito2 = escudoEjercito2.getValor();
+		// int fuerzaEnemigo = escudoheroeenemigo.getValor();
+		// int fuerzaEjercitoEnemigo1 = escudoenemigo1.getValor();
+		// int fuerzaEjercitoEnemigo2 = escudoenemigo2.getValor();
 
 		if (bAtaque) {
 
 			// boton de magia de ataque
 
-			if (jugador.getHeroeJugador().getMagias_Ataque()<=0) {
-				Toast to = Toast.makeText(this, "No te quedan mágias de ataque", 1500);
-				to.setGravity(Gravity.CENTER,0,0);
+			if (jugador.getHeroeJugador().getMagias_Ataque() <= 0) {
+				Toast to = Toast.makeText(this,
+						"No te quedan magias de ataque", 1500);
+				to.setGravity(Gravity.CENTER, 0, 0);
 				to.show();
+			} else {
+				int magiasAtaque = jugador.getHeroeJugador().getMagias_Ataque();
+				magiasAtaque--;
+				jugador.getHeroeJugador().setMagias_Ataque(magiasAtaque);
+
 			}
-			
-			int magiasAtaque = jugador.getHeroeJugador().getMagias_Ataque();
-			magiasAtaque--;
-			jugador.getHeroeJugador().setMagias_Ataque(magiasAtaque);
-			
-			
 			escudoheroe = jugador.getHeroeJugador().getEscudo_Cruz();
 			int aux = escudoheroe.getValor() * 2;
 			if (aux > 12)
@@ -429,22 +428,22 @@ public class ActivityLuchaHeroe extends Activity {
 			MostrarDatos();
 
 		} else {
-			if (jugador.getHeroeJugador().getMagias_Defensa()>0) {
-			bMagia = true;
-			int aux = jugador.getHeroeJugador().getMagias_Defensa();
-			aux--;
-			jugador.getHeroeJugador().setMagias_Defensa(aux);
-			Toast to = Toast.makeText(this, "Has usado mágia de defensa", 2000);
-			to.setGravity(Gravity.CENTER, 0, 0);
-			to.show();
-			}
-			else {
-				Toast to = Toast.makeText(this, "No tiene magias de ataque", 1500);
-				to.setGravity(Gravity.CENTER, 0,0);
+			if (jugador.getHeroeJugador().getMagias_Defensa() > 0) {
+				bMagia = true;
+				int aux = jugador.getHeroeJugador().getMagias_Defensa();
+				aux--;
+				jugador.getHeroeJugador().setMagias_Defensa(aux);
+				Toast to = Toast.makeText(this, "Has usado magia de defensa",
+						2000);
+				to.setGravity(Gravity.CENTER, 0, 0);
+				to.show();
+			} else {
+				Toast to = Toast.makeText(this, "No tiene magias de defensa",
+						1500);
+				to.setGravity(Gravity.CENTER, 0, 0);
 				to.show();
 			}
-				
-				
+
 		}
 	}
 
