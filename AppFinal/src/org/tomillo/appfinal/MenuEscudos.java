@@ -80,7 +80,6 @@ public class MenuEscudos extends Activity {
 
 		// se muestra cada vez el nº de escudos ganados, hasta un máximo de 9 escudos 
 		//aunque las partidas ganadas sean 10
-		
 		for (int i = 0; (i < miJugador.getVictorias_actuales()&&i <9); i++) {
 			escudos[i].setVisibility(View.VISIBLE);
 

@@ -24,23 +24,24 @@
         android:background="@color/blanco"
         android:ems="10" />
 
-    <Button
-        android:id="@+id/button2"
+    <ImageButton
+        android:id="@+id/imageButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/Nombre"
         android:layout_below="@+id/Nombre"
-        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btnaceptar"
         android:onClick="OnClick"
-        android:text="Button" />
+        android:src="@drawable/btnaceptar" />
 
     <ImageButton
         android:id="@+id/ImgBtnRegistrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/Nombre"
-        android:layout_alignTop="@+id/button2"
+        android:layout_alignLeft="@+id/imageButton1"
+        android:layout_below="@+id/imageButton1"
+        android:background="@drawable/btregistrar"
         android:onClick="Registrar"
-        android:src="@android:drawable/btn_star" />
+        android:src="@drawable/btregistrar" />
 
 </RelativeLayout>

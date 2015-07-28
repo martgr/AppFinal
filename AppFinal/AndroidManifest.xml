@@ -10,13 +10,18 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_launcher1"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar" >
+             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".MenuPrincipal"
@@ -27,10 +32,7 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@android:style/Theme.NoTitleBar" >
-             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+           
         </activity>
         <activity
             android:name=".Configuracion"
@@ -40,7 +42,6 @@
             android:name=".Escudo1"
             android:label="@string/title_activity_escudo"
             android:theme="@android:style/Theme.NoTitleBar" >
-
         </activity>
         <activity
             android:name="Preferencias"
@@ -50,9 +51,7 @@
             android:name=".MenuEscudos"
             android:label="@string/title_activity_menu_escudos"
             android:theme="@android:style/Theme.NoTitleBar" >
-            
--
-          
+-
         </activity>
         <activity
             android:name=".Transicion_castillo"
@@ -63,31 +62,42 @@
             android:name=".Pantalla_finalganado"
             android:label="@string/title_activity_pantalla_final"
             android:theme="@android:style/Theme.NoTitleBar" >
-            
         </activity>
         <activity
             android:name=".Pantalla_finalperdido"
             android:label="@string/title_activity_pantalla_finalperdido"
             android:theme="@android:style/Theme.NoTitleBar" >
-           
         </activity>
         <activity
             android:name=".Transicion_Heroe"
             android:label="@string/title_activity_transicion__heroe"
             android:theme="@android:style/Theme.NoTitleBar" >
-
         </activity>
         <activity
             android:name=".ActivityLuchaHeroe"
             android:label="@string/title_activity_activity_lucha_heroe"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
-        -
+
         <activity
             android:name=".ActivityCastillo"
             android:label="@string/title_activity_activity_castillo"
             android:theme="@android:style/Theme.NoTitleBar" >
-            
+        </activity>
+        <activity
+            android:name=".Records"
+            android:label="@string/title_activity_records"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".Creditos"
+            android:label="@string/title_activity_Creditos" 
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity
+            android:name=".Ayuda"
+            android:label="@string/title_activity_ayuda"
+            android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
     </application>
 

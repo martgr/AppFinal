@@ -19,7 +19,6 @@
 
     <string name="pref_nivel_default" />
     <string name="title_activity_preferencias">title_activity_preferencias</string>
-    <string name="creditos" />
     <string name="title_activity_menu_escudos">MenuEscudos</string>
     <string name="txtTitulo" />
     <string name="txtContadorBankias" />
@@ -32,5 +31,33 @@
     <string name="title_activity_transicion__heroe">Transicion_Heroe</string>
     <string name="title_activity_activity_lucha_heroe">title_activity_activity_lucha_heroe</string>
     <string name="title_activity_activity_castillo">title_activity_activity_castillo</string>
+    <string name="creditos">Créditos</string>
+    <string name="ReneG">René Gonzalez</string>
+    <string name="AdrianAB">Adrián Angel Perez</string>
+    <string name="MigelAPR">Miguel Angel Perez Rodriguez</string>
+    <string name="JavierA">Javier Angulo</string>
+    <string name="DavidRS">David Rodríguez soler</string>
+    <string name="CarlosBC">Carlos Benitez Celi</string>
+    <string name="AitorLR">Aitor Lorenzo Riego</string>
+    <string name="AgustinCG">Agustín Carmona García</string>
+    <string name="MauricioC">Mauricio Clavijo</string>
+    <string name="LuisMP">Luis Mira Paz</string>
+    <string name="title_activity_Creditos">title_activity_Creditos</string>
+    <string name="title_activity_records">title_activity_records</string>
+    <string name="Has_ganado">"Battle Castle: Conwy 360" de la website Battle-Castle.tv a traves de Vimeo.com</string>
+    <string name="Has_perdido">"Tesla-The kings are dead [Spec] (Dir. Aaron Moorhead)" a través de la web Vimeo.com</string>
+    <string name="Asalto_al_castillo">De la web www.indalchess.com "Maqueta de carton de "castillo de los caballeros medievales". Kit construcción. Marca clever papel ref. 14207" </string>
+    <string name="Batalla_del_heroe">De la web www.taringa.net/posts/info/15691196/Los-caballeros-templarios.html</string>
+    <string name="title_activity_ayuda">Ayuda</string>
+    <string name="ComoEsElJuego">El juego simula el asalto a un castillo medieval que te pertenece. Se luchara en dos pantallas diferentes para conseguir 9 escudos diferentes que te otorgaran la victoria final. En cada una de ellas, el usuario tiene sus escudos con distintas puntuaciones aleatorias y la maquina, los suyos. Por comparación de puntuaciones entre escudos, se decidirá quien gana y quien pierde, usuario o máquina. </string>
+    <string name="PantallaCastillo">Dispones de 4 cartas: torre (la puntuación es aleatoria pero su valor inicial permanecerá durante el resto de las batallas) y otras 3 que se cambiaran aleatoriamente cada vez que se juegue una batalla además de tener la opción de poder cambiar las cartas en 3 ocasiones durante el juego y una única en esa batalla. Tu invasor (la maquina), solo tiene tres cartas dado que no tiene torre y, en este caso se comparan las del mismo tipo: héroe del usuario con héroe de la maquina, etc. Al pulsar el botón “jugar” comenzará la batalla del castillo, pudiendo ganar, perder, o empatar, según el resultado de la comparación de puntos de las cartas o escudos. </string>
+    <string name="PantallaHeroe">Igual que la pantalla anterior, pero dispones de solo tres cartas. La maquina también y, en este caso, las tres cartas tuyas luchan en conjunto contra las tres de la maquina. La victoria en ambas pantallas, te proporcionará un escudo. </string>
+    <string name="SobreElJuego">Sobre el juego:</string>
+    <string name="Pantalla_castillo">Pantalla castillo:</string>
+    <string name="Pantalla_Heroe">Pantalla heroe:</string>
+    <string name="VideoHasPerdido">Vídeo "Has perdido":</string>
+    <string name="VideHasGanado">Vídeo "Has ganado":</string>
+    <string name="ImagenAsaltoAlCastillo">Imagen "Asalto al castillo":</string>
+    <string name="BatallaDelHeroe">Imagen "Batalla del héroe":</string>
 
 </resources>

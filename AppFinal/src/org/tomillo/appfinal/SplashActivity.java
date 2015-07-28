@@ -59,7 +59,7 @@ public class SplashActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent Logo = new Intent (SplashActivity.this,Escudo.class);
+				Intent Logo = new Intent (SplashActivity.this,Escudo1.class);
 				startActivity(Logo);
 				finish();
 				
