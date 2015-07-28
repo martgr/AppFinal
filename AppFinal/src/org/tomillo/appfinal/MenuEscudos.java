@@ -112,9 +112,6 @@ public class MenuEscudos extends Activity {
 			UsuariosSQLiteHelper usdbh = new UsuariosSQLiteHelper(this,
 					"DBUsuarios", null, 1);
 
-			//comprobacion---------------------------------------------
-			//usdbh.actualizarRecord(miJugador.getNombreJugador(), 14);
-			//---------------------------------------------------------
 			usdbh.actualizarRecord(miJugador.getNombreJugador(), puntuacionTotal, bankias);
 
 	
@@ -131,10 +128,7 @@ public class MenuEscudos extends Activity {
 	
 			ibBatalla.setBackgroundResource(R.drawable.btfin);
 		} else {
-			estadoJuego = 0;
-			//-----------------------------------comprobaciones
-			//ibBatalla.setBackgroundResource(R.drawable.btfin);
-			
+			estadoJuego = 0;		
 		}
 
 	}
@@ -169,8 +163,6 @@ public class MenuEscudos extends Activity {
 	}
 
 	
-	//DESCOMENTAR CUANDO ESTEN LAS PANTALLAS DEL FINAL
-	
 	// Metodo batalla
 	public void batallaOFinDeJuego(View v) {
 		if (estadoJuego == 1) {
@@ -186,6 +178,7 @@ public class MenuEscudos extends Activity {
 				i.putExtra("clavePuntuacion", puntuacionTotal);
 				i.putExtra("claveBankia", bankias);
 				i.putExtra("claveNumPartidas", numPartidas);
+				i.putExtra("claveNombreJugador", miJugador.getNombreJugador());
 				startActivity(i);
 				finish();
 			} else {
@@ -193,6 +186,7 @@ public class MenuEscudos extends Activity {
 					Intent i = new Intent(this, Transicion_castillo.class);
 					i.putExtra("PARCELABLE_Jugador", miJugador);
 					i.putExtra("PARCELABLE_Enemigo", miEnemigo);
+					i.putExtra("claveNombreJugador", miJugador.getNombreJugador());
 					startActivity(i);
 					finish();
 				}

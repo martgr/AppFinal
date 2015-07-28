@@ -18,7 +18,7 @@
     <string-array name="pref_nivel_valores"></string-array>
 
     <string name="pref_nivel_default" />
-    <string name="title_activity_preferencias">title_activity_preferencias</string>
+    <string name="title_activity_preferencias">Preferencias</string>
     <string name="title_activity_menu_escudos">MenuEscudos</string>
     <string name="txtTitulo" />
     <string name="txtContadorBankias" />
@@ -42,8 +42,8 @@
     <string name="AgustinCG">Agustín Carmona García</string>
     <string name="MauricioC">Mauricio Clavijo</string>
     <string name="LuisMP">Luis Mira Paz</string>
-    <string name="title_activity_Creditos">title_activity_Creditos</string>
-    <string name="title_activity_records">title_activity_records</string>
+    <string name="title_activity_Creditos">Créditos</string>
+    <string name="title_activity_records">Records</string>
     <string name="Has_ganado">"Battle Castle: Conwy 360" de la website Battle-Castle.tv a traves de Vimeo.com</string>
     <string name="Has_perdido">"Tesla-The kings are dead [Spec] (Dir. Aaron Moorhead)" a través de la web Vimeo.com</string>
     <string name="Asalto_al_castillo">De la web www.indalchess.com "Maqueta de carton de "castillo de los caballeros medievales". Kit construcción. Marca clever papel ref. 14207" </string>

@@ -3,6 +3,7 @@ package org.tomillo.appfinal;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnPreparedListener;
@@ -33,27 +34,41 @@ public class Pantalla_finalganado extends Activity{
 		
 		myVideoView = (VideoView) findViewById(R.id.videoGanado);
 		
-		Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.castillo);
+		Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.castlevictoria);
 		myVideoView.setVideoURI(uri);
 		
 		myVideoView.start();
 		
 		//para recibir el intent de puntuacion, nº partidas, nº bankias:
 		//recibimos un valor y se lo asignamos a un string
-		String PuntosGanados=getIntent().getExtras().getString("clavePuntuacion");
+		int PuntosGanados=getIntent().getExtras().getInt("clavePuntuacion");
 		//le establecemos el valor recibido de puntuacion
-		puntuacionGanada.setText(String.valueOf(PuntosGanados));
+		puntuacionGanada.setText("Puntuacion: "+String.valueOf(PuntosGanados));
 		
-		String numPartidas=getIntent().getExtras().getString("claveNumPartidas");
-		numPartidasGanadas.setText(String.valueOf(numPartidas));
+		int numPartidas=getIntent().getExtras().getInt("claveNumPartidas");
+		numPartidasGanadas.setText("Nº de partidas: "+String.valueOf(numPartidas));
 		
-		String bankia=getIntent().getExtras().getString("claveBankia");
-		numBankias.setText(String.valueOf(bankia));
+		int bankia=getIntent().getExtras().getInt("claveBankia");
+		numBankias.setText("Nº de bankias: "+String.valueOf(bankia));
+		
+		final String nombreJugador=getIntent().getExtras().getString("claveNombreJugador");
+		
+		
+		myVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+			@Override
+			public void onCompletion(MediaPlayer mp) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+				i.putExtra("claveNombreJugador", nombreJugador);
+				startActivity(i);
+				finish();
+			}
+			
+		});
+	}
+		
 		
 				
-	}
-	
-	
-
-	
+		
 }
