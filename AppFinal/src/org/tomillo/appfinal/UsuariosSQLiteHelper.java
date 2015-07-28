@@ -40,7 +40,7 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
 		db.execSQL(sqlCreate);
 	}
 
-	public void actualizarRecord(String nombreJugador, int puntuacionTotal) {
+	public void actualizarRecord(String nombreJugador, int puntuacionTotal, int bankias) {
 
 		int record;
 
@@ -50,8 +50,9 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
 
 		if (puntuacionTotal > record) {
 			db.execSQL("UPDATE Usuarios SET record=" + puntuacionTotal
-					+ " WHERE Nombre='" + nombreJugador + "'");
+					+ " , bankias="+bankias+ " WHERE Nombre='" + nombreJugador + "'");
 		}
+		db.close();
 	}
 
 	private int obtenerRecord(String nombreJugador) {
@@ -67,9 +68,9 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
 				c.moveToFirst();
 				record = c.getInt(c.getColumnIndex("record"));
 
-				c.close();
+				//c.close();
 				// Cerramos la base de datos
-				db.close();
+				
 
 			} catch (Exception e) {
 				e.printStackTrace();

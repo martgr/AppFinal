@@ -50,7 +50,7 @@ public class Transicion_castillo extends Activity {
 	        		startActivity(intent);
 	        		finish();
 	            };
-	        }, 4000);
+	        }, 3000);
 
 
 	}

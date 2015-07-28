@@ -41,6 +41,8 @@ public class Pantalla_finalperdido extends Activity {
 			
 			String numPartidas=getIntent().getExtras().getString("claveNumPartidas");
 			numPartidasPerdidas.setText(String.valueOf(numPartidas));
+			
+			
 		}
 	}
 	

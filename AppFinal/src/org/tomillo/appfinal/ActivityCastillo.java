@@ -139,9 +139,9 @@ public class ActivityCastillo extends Activity {
 				}
 
 	
-				// Lanzamos Heroe
+				//Se muestra el diálogo con la puntuación obtenida
 				mostrarDialogo(aux2, aux3, aux4);
-
+				// Lanzamos Heroe
 				Intent intent = new Intent(ActivityCastillo.this,
 						Transicion_Heroe.class);
 				intent.putExtra("PARCELABLE_Jugador", jugador);
@@ -164,11 +164,9 @@ public class ActivityCastillo extends Activity {
 
 					jugador.setNroActualizacionesCastillo(jugador
 							.getNroActualizacionesCastillo() - 1);
-
-					Log.i("Pueblo sin cambiada", jugador.getEscudoPueblo().getRuta());
+					
 					jugador.CambiarCartasCastillo();
-
-					Log.i("Pueblo cambiada", jugador.getEscudoPueblo().getRuta());
+				
 					MostrarDatos();
 
 				}
@@ -258,17 +256,26 @@ public class ActivityCastillo extends Activity {
 		          
 		            public void onClick(DialogInterface dialogInterface, int i) {
 		                
-		                Intent myIntent = new Intent(getApplicationContext(),
-		                		Transicion_Heroe.class);
-		                Bundle b = new Bundle();
-		             
-		                myIntent.putExtras(b);
+		            	//Se va a la pantalla correspondiente
+		                if (jugador.getHeroeJugador().isbVivo() && enemigo.isbVivo()) {
+							Intent intent = new Intent(ActivityCastillo.this,
+									Transicion_Heroe.class);
+							intent.putExtra("PARCELABLE_Jugador", jugador);
+							intent.putExtra("PARCELABLE_Enemigo", enemigo);
 
-		                startActivity(myIntent);
+							startActivity(intent);
+						} else {
+							Intent intent = new Intent(ActivityCastillo.this,
+									MenuEscudos.class);
+							intent.putExtra("PARCELABLE_Jugador", jugador);
+							intent.putExtra("PARCELABLE_Enemigo", enemigo);
+							
+							startActivity(intent);
+							
+						}
 		                
 		            }
 		        });
-		AlertDialog dialog = alertDialog.create();
 		alertDialog.show();
 	}
 

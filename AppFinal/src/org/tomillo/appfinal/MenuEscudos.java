@@ -55,10 +55,10 @@ public class MenuEscudos extends Activity {
 			escudos[i].setVisibility(View.INVISIBLE);
 		}
 
+		//por si jugador viene de un ciclo de partida y ya contiene algun valor
+		miJugador = (Jugador) getIntent().getExtras().getSerializable("PARCELABLE_Jugador");
 		// Para crear un jugador cada vez que se inicie la partida y recoger el
 		// nombre jugador
-		miJugador = (Jugador) getIntent().getExtras().getSerializable("PARCELABLE_Jugador");
-		
 		if (miJugador == null) {
 			miJugador = new Jugador();
 		Log.i("Hemos creado un nuevo jugador", "Hemos creado un nuevo jugador");
@@ -71,14 +71,15 @@ public class MenuEscudos extends Activity {
 			// Para aumentar numero de jugadas en curso:
 			miJugador.setNumJugadas(miJugador.getNumJugadas() + 1);
 		}
+		//por si enemigo viene de un ciclo de partida y ya contiene algun valor
+		miEnemigo = (Enemigo) getIntent().getExtras().getSerializable("PARCELABLE_Enemigo");
 		// Para crear un enemigo cada vez que se inicie la partida
 		if (miEnemigo == null) {
 			miEnemigo = new Enemigo();
-		} else {
-			miEnemigo = (Enemigo) getIntent().getExtras().getSerializable("PARCELABLE_Enemigo");
 		}
 
 		// se muestra cada vez el nº de escudos ganados
+		
 		for (int i = 0; i < miJugador.getVictorias_actuales(); i++) {
 			escudos[i].setVisibility(View.VISIBLE);
 		}
@@ -98,7 +99,8 @@ public class MenuEscudos extends Activity {
 		// y rellenar puntuacionTotal, bankias y numPartidas q se pasaran como
 		// putextras a pantalla ganado o pantalla perdido. Tb se consulta a la BBDD el
 		// record y si es mayor la puntuacion se actualiza el record.
-		if (miJugador.getVictorias_actuales() == 9) {
+		//---------------el 2 ----------------------------------------------------------------
+		if (miJugador.getVictorias_actuales() >= 2) {
 			estadoJuego = 1;
 
 			puntuacionTotal = miJugador.getPuntuacion()
@@ -109,7 +111,12 @@ public class MenuEscudos extends Activity {
 			UsuariosSQLiteHelper usdbh = new UsuariosSQLiteHelper(this,
 					"DBUsuarios", null, 1);
 
-			usdbh.actualizarRecord(nombreJugador, puntuacionTotal);
+			//comprobacion---------------------------------------------
+			//usdbh.actualizarRecord(miJugador.getNombreJugador(), 14);
+			Log.i("puntuacionTotal", String.valueOf(puntuacionTotal));
+			//Log.i("nombre", miJugador.getNombreJugador());
+			//---------------------------------------------------------
+			usdbh.actualizarRecord(miJugador.getNombreJugador(), puntuacionTotal, bankias);
 
 			////DESCOMENTAR CUANDO ESTE EL RECURSO
 			ibBatalla.setBackgroundResource(R.drawable.btfin);
@@ -137,7 +144,7 @@ public class MenuEscudos extends Activity {
 		// Para que se marquen las estrellas y mostrar el rango:
 		if (miJugador.getVictorias_actuales() <= 2) {
 			estrellas.setRating(0);
-			titulo.setText("Feudal");
+			titulo.setText(miJugador.DescripcionRango());
 		} else {
 			if (miJugador.getVictorias_actuales() > 2
 					&& miJugador.getVictorias_actuales() <= 5) {

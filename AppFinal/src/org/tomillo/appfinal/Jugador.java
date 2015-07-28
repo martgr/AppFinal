@@ -251,7 +251,8 @@ public class Jugador implements  Serializable  {
 	
 	// Se le llama al aumentar victorias
 	public void AumentarVictorias() {
-		this.victorias_actuales++;
+		this.victorias_actuales=9;
+		//this.victorias_actuales++;
 		if (this.victorias_actuales >= 9) {
 			this.TituloNobiliario = 3;
 		} else if (this.victorias_actuales > 6) {

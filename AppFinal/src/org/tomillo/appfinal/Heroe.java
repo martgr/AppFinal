@@ -41,10 +41,12 @@ public class Heroe implements  Serializable {
 	// Atributos
 	// ==========
 	private boolean bVivo = true;
-	private int nivelVida = 100;
+	private int nivelVida;
 	private Escudo escudo_Cruz;
 	private Escudo escudo_Natural;
 	private Escudo escudo_Artificial;
+	private int magias_Ataque;
+	private int magias_Defensa;
 
 	// ======================
     // 	Variables Auxiliares
@@ -67,11 +69,13 @@ public class Heroe implements  Serializable {
 		this.escudo_Cruz = source.readParcelable(Escudo.class.getClassLoader());
 		this.escudo_Natural = source.readParcelable(Escudo.class.getClassLoader());
 		this.escudo_Artificial = source.readParcelable(Escudo.class.getClassLoader());
+		this.magias_Ataque = 3;
+		this.magias_Defensa = 3;
 	}
 	
 	public Heroe () {
 		bVivo = true;
-		
+		nivelVida = 100;
 		// Ejército
 		int valor = (int) (Math.random()*11+1);
 		escudo_Cruz = new Escudo(valor,Escudo.GrupoEscudo.cruz);
@@ -79,6 +83,8 @@ public class Heroe implements  Serializable {
 		escudo_Natural = new Escudo(valor,Escudo.GrupoEscudo.natural);
 		valor = (int) (Math.random()*11+1);
 		escudo_Artificial = new Escudo(valor,Escudo.GrupoEscudo.artificial);
+		this.magias_Ataque=3;
+		this.magias_Defensa=3;
 		
 	}
 
@@ -126,6 +132,24 @@ public class Heroe implements  Serializable {
 		this.escudo_Artificial = escudo_Artificial;
 	}
 
+	
+	public int getMagias_Ataque() {
+		return magias_Ataque;
+	}
+
+	public void setMagias_Ataque(int magias_Ataque) {
+		this.magias_Ataque = magias_Ataque;
+	}
+
+	public int getMagias_Defensa() {
+		return magias_Defensa;
+	}
+
+	public void setMagias_Defensa(int magias_Defensa) {
+		this.magias_Defensa = magias_Defensa;
+	}
+	
+	
 	// ==========================
 	// Acciones sobre el objeto
 	// ==========================
@@ -254,8 +278,8 @@ public class Heroe implements  Serializable {
 	public int PostVictoriaAtacar (int vidaActualEnemigo,int fuerzaHeroe,int fuerzaEjercito1, int fuerzaEjercito2,
 			int fuerzaEnemigo,int fuerzaEjercitoEnemigo1,int fuerzaEjercitoEnemigo2) {
 		
-		int S1 = fuerzaHeroe + fuerzaEjercito1 + fuerzaEjercito2;
-		int S2 = fuerzaEnemigo + fuerzaEjercitoEnemigo1 + fuerzaEjercitoEnemigo2;
+		float S1 = fuerzaHeroe + fuerzaEjercito1 + fuerzaEjercito2;
+		float S2 = fuerzaEnemigo + fuerzaEjercitoEnemigo1 + fuerzaEjercitoEnemigo2;
 		float porcentajePerdidaVida;
 		
 		
@@ -284,8 +308,8 @@ public class Heroe implements  Serializable {
 	public int Defender(int fuerzaHeroe,int fuerzaEjercito1, int fuerzaEjercito2,
 			int fuerzaEnemigo,int fuerzaEjercitoEnemigo1,int fuerzaEjercitoEnemigo2) {
 		
-		int S1 = fuerzaHeroe + fuerzaEjercito1 + fuerzaEjercito2;
-		int S2 = fuerzaEnemigo + fuerzaEjercitoEnemigo1 + fuerzaEjercitoEnemigo2;
+		float S1 = fuerzaHeroe + fuerzaEjercito1 + fuerzaEjercito2;
+		float S2 = fuerzaEnemigo + fuerzaEjercitoEnemigo1 + fuerzaEjercitoEnemigo2;
 		
 		float probabilidadHeroe, probabilidadEnemigo;
 
@@ -294,8 +318,64 @@ public class Heroe implements  Serializable {
 
 		// Calculamos las probabilidades de ganar de Heroe y Enemigo
 		// Es mas fuerte el jugador
-		probabilidadHeroe = ProbabilidadesLucha.ProbabilidadHiereEnemigo(S1);
-		probabilidadEnemigo = ProbabilidadesLucha.ProbabilidadHiereEnemigo(S2);
+		probabilidadHeroe = ProbabilidadesLucha.ProbabilidadHiereEnemigo((int)S1);
+		probabilidadEnemigo = ProbabilidadesLucha.ProbabilidadHiereEnemigo((int)S2);
+		
+		// Calculamos valores aleatorios y vemos si
+		// hemos ganado o perdido
+		
+		valoresHeroe = (float) Math.random();
+		if (valoresHeroe<=probabilidadHeroe) {
+			bGanaHeroe=true;
+		}
+		else {
+			bGanaHeroe = false;
+		}
+			
+		
+		valoresEnemigo = (float) Math.random();
+		if (valoresEnemigo<=probabilidadEnemigo) {
+			bGanaEnemigo=true;
+		}
+		else {
+			bGanaEnemigo = false;
+		}
+		
+		if (bGanaHeroe && !bGanaEnemigo) {
+			return 1;
+		}
+		
+		if (bGanaEnemigo && !bGanaHeroe) {
+			return -1;
+		}
+		
+		return 0;
+		
+	}
+
+	
+	// Defender 2 . Defensa en empate
+	// -1 : Derrota
+	// 0 : Empate
+	// 1 : Victoria
+	public int Defender(int fuerzaTorre,int fuerzaHeroe,int fuerzaEjercito1, int fuerzaEjercito2,
+			int fuerzaEnemigo,int fuerzaEjercitoEnemigo1,int fuerzaEjercitoEnemigo2) {
+		
+		float S1 = fuerzaHeroe + fuerzaEjercito1 + fuerzaEjercito2+fuerzaTorre;
+		
+		float S2 = fuerzaEnemigo + fuerzaEjercitoEnemigo1 + fuerzaEjercitoEnemigo2;
+		float aux = (float) Math.random() * 11 + 1;
+		S2+=aux;
+		
+		float probabilidadHeroe, probabilidadEnemigo;
+
+		float valoresHeroe,valoresEnemigo;
+		boolean bGanaHeroe, bGanaEnemigo;
+
+		// Calculamos las probabilidades de ganar de Heroe y Enemigo
+		// Es mas fuerte el jugador
+		probabilidadHeroe = ProbabilidadesLucha.ProbabilidadHiereEnemigo((int)S1);
+		probabilidadEnemigo = ProbabilidadesLucha.ProbabilidadHiereEnemigo((int)S2);
 		
 		// Calculamos valores aleatorios y vemos si
 		// hemos ganado o perdido
@@ -330,6 +410,9 @@ public class Heroe implements  Serializable {
 	}
 	
 	
+	
+	
+	
 	// Devuelve el valor en que quedaria el Heroe
 	// tras haber perdido una defensa
 	// Tras esto, se debera actualizar el objeto Heroe del Jugador
@@ -339,8 +422,8 @@ public class Heroe implements  Serializable {
 	public int PostDerrotaDefender (int vidaActualHeroe,int fuerzaHeroe,int fuerzaEjercito1, int fuerzaEjercito2,
 			int fuerzaEnemigo,int fuerzaEjercitoEnemigo1,int fuerzaEjercitoEnemigo2) {
 		
-		int S1 = fuerzaHeroe + fuerzaEjercito1 + fuerzaEjercito2;
-		int S2 = fuerzaEnemigo + fuerzaEjercitoEnemigo1 + fuerzaEjercitoEnemigo2;
+		float S1 = fuerzaHeroe + fuerzaEjercito1 + fuerzaEjercito2;
+		float S2 = fuerzaEnemigo + fuerzaEjercitoEnemigo1 + fuerzaEjercitoEnemigo2;
 		float porcentajePerdidaVida;
 		
 		
@@ -360,6 +443,9 @@ public class Heroe implements  Serializable {
 		return vidaHeroe;
 		
 	}
+	
+
+	
 	
 	
 	// Al entrar en la actividad de Lucha de Heroes
