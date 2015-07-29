@@ -212,13 +212,13 @@ public class ActivityLuchaHeroe extends Activity {
 					// MURIO EL HEROE
 					bMurioHeroe = true;
 					jugador.getHeroeJugador().setbVivo(false);
-					Toast t = Toast.makeText(this, "Has muerto", 3000);
+					Toast t = Toast.makeText(this, "Tu héroe muerto", 2000);
 					toas.setGravity(Gravity.CENTER, 0, 0);
 					t.show();
 
 				}
 				// else {
-				// bGanoEnemigo = true;
+				//bGanoEnemigo = true;
 				// Toast tos = Toast.makeText(this, "Ha vencido el Enemigo",
 				// 3000);
 				// toas.setGravity(Gravity.CENTER, 0, 0);
@@ -270,6 +270,7 @@ public class ActivityLuchaHeroe extends Activity {
 					// MURIO EL ENEMIGO
 					jugador.ActualizarPuntuacionHeroe();
 					bMurioEnemigo = true;
+					enemigo.setbVivo(false);
 					Toast toas = Toast.makeText(this,
 							"Has derrotado al enemigo. Ha muerto", 3000);
 					toas.setGravity(Gravity.CENTER, 0, 0);

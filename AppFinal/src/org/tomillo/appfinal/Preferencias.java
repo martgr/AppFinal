@@ -11,23 +11,25 @@ import android.widget.Toast;
 
 public class Preferencias extends PreferenceActivity {
 
+	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.preferencias);
 		
+		@SuppressWarnings("deprecation")
 		final CheckBoxPreference chk = (CheckBoxPreference) findPreference("pref_sonido");
 		chk.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
 			
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
 				// TODO Auto-generated method stub
 
-				
-				if (!chk.isChecked()) {
+	
+				if ( (newValue.toString().equals("false")) ) {
 					stopService(new Intent(getApplicationContext(),ServicioMusica.class));
 				}
 				else
 				{
-					startActivity(new Intent(getApplicationContext(),ServicioMusica.class));
+					startService(new Intent(getApplicationContext(),ServicioMusica.class));
 				}
 				return true;
 				
