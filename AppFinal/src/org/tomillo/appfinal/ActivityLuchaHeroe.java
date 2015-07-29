@@ -346,6 +346,7 @@ public class ActivityLuchaHeroe extends Activity {
 					bVivoHeroe = false;
 					// MURIO EL HEROE
 					bMurioHeroe = true;
+					jugador.getHeroeJugador().setbVivo(false);
 					Toast t = Toast.makeText(this, "Tu héroe ha muerto", 3000);
 					t.setGravity(Gravity.CENTER, 0, 0);
 					t.show();
@@ -399,25 +400,27 @@ public class ActivityLuchaHeroe extends Activity {
 				int magiasAtaque = jugador.getHeroeJugador().getMagias_Ataque();
 				magiasAtaque--;
 				jugador.getHeroeJugador().setMagias_Ataque(magiasAtaque);
+				
+				escudoheroe = jugador.getHeroeJugador().getEscudo_Cruz();
+				int aux = escudoheroe.getValor() * 2;
+				if (aux > 12)
+					aux = 12;
+				escudoheroe.setValor(aux);
+
+				escudoEjercito1 = jugador.getHeroeJugador().getEscudo_Natural();
+				aux = escudoEjercito1.getValor() * 2;
+				if (aux > 12)
+					aux = 12;
+				escudoEjercito1.setValor(aux);
+
+				escudoEjercito2 = jugador.getHeroeJugador().getEscudo_Artificial();
+				aux = escudoEjercito2.getValor() * 2;
+				if (aux > 12)
+					aux = 12;
+				escudoEjercito2.setValor(aux);
 
 			}
-			escudoheroe = jugador.getHeroeJugador().getEscudo_Cruz();
-			int aux = escudoheroe.getValor() * 2;
-			if (aux > 12)
-				aux = 12;
-			escudoheroe.setValor(aux);
-
-			escudoEjercito1 = jugador.getHeroeJugador().getEscudo_Natural();
-			aux = escudoEjercito1.getValor() * 2;
-			if (aux > 12)
-				aux = 12;
-			escudoEjercito1.setValor(aux);
-
-			escudoEjercito2 = jugador.getHeroeJugador().getEscudo_Artificial();
-			aux = escudoEjercito2.getValor() * 2;
-			if (aux > 12)
-				aux = 12;
-			escudoEjercito2.setValor(aux);
+			
 
 			TextView hero = (TextView) findViewById(R.id.tvAtaqueHeroe);
 			TextView ejer1 = (TextView) findViewById(R.id.tvAtaqueEjercito1);
