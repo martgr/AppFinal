@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">AppFinal</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Secret of the Shields</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="ayuda">Ayuda</string>
     <string name="acerca">Acerca de</string>
@@ -22,7 +21,7 @@
     <string name="title_activity_menu_escudos">MenuEscudos</string>
     <string name="txtTitulo" />
     <string name="txtContadorBankias" />
-    <string name="txtVictoriasOrdenador">Victorias Ordenador</string>
+    <string name="txtVictoriasOrdenador">Victorias Enemigo: </string>
     <string name="txtContadorVictoriasOrdenador" />
     <string name="title_activity_transicion_castillo">Transicion_castillo</string>
     <string name="asalto">Asalto al Castillo</string>
@@ -33,10 +32,10 @@
     <string name="title_activity_activity_castillo">title_activity_activity_castillo</string>
     <string name="creditos">Créditos</string>
     <string name="ReneG">René Gonzalez</string>
-    <string name="AdrianAB">Adrián Angel Perez</string>
+    <string name="AdrianAB">Adrián Angel Barrio</string>
     <string name="MigelAPR">Miguel Angel Perez Rodriguez</string>
     <string name="JavierA">Javier Angulo</string>
-    <string name="DavidRS">David Rodríguez soler</string>
+    <string name="DavidRS">David Rodríguez Soler</string>
     <string name="CarlosBC">Carlos Benitez Celi</string>
     <string name="AitorLR">Aitor Lorenzo Riego</string>
     <string name="AgustinCG">Agustín Carmona García</string>

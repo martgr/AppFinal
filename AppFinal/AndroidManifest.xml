@@ -114,6 +114,7 @@
             android:theme="@android:style/Theme.NoTitleBar"
             android:screenOrientation="portrait" >
         </activity>
+        <service android:name=".ServicioMusica"/>
     </application>
 
 </manifest>

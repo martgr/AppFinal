@@ -53,7 +53,7 @@ public class MenuPrincipal extends Activity {
 		});
 			
 		//Terminar cuando tengamos pantalla principal
-		final ImageButton juego = (ImageButton)findViewById(R.id.ImgBtnJugar);
+		/*final ImageButton juego = (ImageButton)findViewById(R.id.ImgBtnJugar);
 		juego.setOnClickListener(new View.OnClickListener() {
 			 
 			@Override
@@ -62,14 +62,13 @@ public class MenuPrincipal extends Activity {
             jugar.putExtra( "claveNombreJugador", usuario);
             startActivity(jugar);
 			}
-		});
-		
-		
+		});*/
 		final ImageButton salir = (ImageButton)findViewById(R.id.ImgBtnSalir);
 		salir.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
+			stopService(new Intent(getApplicationContext(),ServicioMusica.class));			
 			finish();
 			System.runFinalization();
 			System.exit(0);

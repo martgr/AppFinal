@@ -11,157 +11,159 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/TextView01"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/ReneG"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/Naranja" />
-
-            <TextView
-                android:id="@+id/Record1"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/AdrianAB"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/Naranja" />
-
-            <TextView
-                android:id="@+id/Nombre1"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/AgustinCG"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/Naranja" />
-
-            <TextView
-                android:id="@+id/Nombre2"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/AitorLR"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/Naranja" />
-
-            <TextView
-                android:id="@+id/Nombre3"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/CarlosBC"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/Naranja" />
-
-            <TextView
-                android:id="@+id/Nombre4"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/DavidRS"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/Naranja" />
-
-            <TextView
-                android:id="@+id/Nombre5"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/JavierA"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/Naranja" />
-
-            <TextView
-                android:id="@+id/Nombre6"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/MauricioC"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/Naranja" />
-
-            <TextView
-                android:id="@+id/Nombre7"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/MigelAPR"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/Naranja" />
-
-            <TextView
-                android:id="@+id/Nombre8"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/ReneG"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/Naranja" />
-			<TextView
-                android:id="@+id/Nombre9"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/LuisMP"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/Naranja" />
-
-			<TextView
-			    android:id="@+id/TextView05"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:text="@string/VideHasGanado"
-			    android:textColor="@color/blanco" />
-
-			<TextView
-			    android:id="@+id/VideoHasGanado"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:text="@string/Has_ganado"
-			    android:textColor="@color/blanco" />
-
-			<TextView
-			    android:id="@+id/TextView04"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:text="@string/VideoHasPerdido"
-			    android:textColor="@color/blanco" />
-
-			<TextView
-			    android:id="@+id/VideoHasPerdido"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:text="@string/Has_perdido"
-			    android:textColor="@color/blanco" />
-
-			<TextView
-			    android:id="@+id/TextView03"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:text="@string/ImagenAsaltoAlCastillo"
-			    android:textColor="@color/blanco" />
-
-			<TextView
-			    android:id="@+id/ImgAsaltoCastillo"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:text="@string/Asalto_al_castillo"
-			    android:textColor="@color/blanco" />
-
-			<TextView
-			    android:id="@+id/TextView02"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:text="@string/BatallaDelHeroe"
-			    android:textColor="@color/blanco" />
-
-			<TextView
-			    android:id="@+id/IngBatallaHeroe"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:text="@string/Batalla_del_heroe"
-			    android:textColor="@color/blanco" />
-
-        </LinearLayout>
         
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/ReneG"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/Naranja" />
+
+        <TextView
+            android:id="@+id/Record1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/AdrianAB"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/Naranja" />
+
+        <TextView
+            android:id="@+id/Nombre1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/AgustinCG"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/Naranja" />
+
+        <TextView
+            android:id="@+id/Nombre2"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/AitorLR"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/Naranja" />
+
+        <TextView
+            android:id="@+id/Nombre3"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/CarlosBC"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/Naranja" />
+
+        <TextView
+            android:id="@+id/Nombre4"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/DavidRS"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/Naranja" />
+
+        <TextView
+            android:id="@+id/Nombre5"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/JavierA"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/Naranja" />
+
+        <TextView
+            android:id="@+id/Nombre6"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/MauricioC"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/Naranja" />
+
+        <TextView
+            android:id="@+id/Nombre7"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/MigelAPR"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/Naranja" />
+
+        <TextView
+            android:id="@+id/Nombre8"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/ReneG"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/Naranja" />
+
+        <TextView
+            android:id="@+id/Nombre9"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/LuisMP"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/Naranja" />
+
+        <TextView
+            android:id="@+id/TextView05"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/VideHasGanado"
+            android:textColor="@color/blanco" />
+
+        <TextView
+            android:id="@+id/VideoHasGanado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Has_ganado"
+            android:textColor="@color/blanco" />
+
+        <TextView
+            android:id="@+id/TextView04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/VideoHasPerdido"
+            android:textColor="@color/blanco" />
+
+        <TextView
+            android:id="@+id/VideoHasPerdido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Has_perdido"
+            android:textColor="@color/blanco" />
+
+        <TextView
+            android:id="@+id/TextView03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ImagenAsaltoAlCastillo"
+            android:textColor="@color/blanco" />
+
+        <TextView
+            android:id="@+id/ImgAsaltoCastillo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Asalto_al_castillo"
+            android:textColor="@color/blanco" />
+
+        <TextView
+            android:id="@+id/TextView02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/BatallaDelHeroe"
+            android:textColor="@color/blanco" />
+
+        <TextView
+            android:id="@+id/IngBatallaHeroe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Batalla_del_heroe"
+            android:textColor="@color/blanco" />
+    </LinearLayout>
 
 </RelativeLayout>
